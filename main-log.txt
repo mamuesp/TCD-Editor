@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2016-04-01T16:42:30</date>
+  <millis>1459521750972</millis>
+  <sequence>0</sequence>
+  <logger>MainLogger</logger>
+  <level>INFO</level>
+  <class>Editor.Main</class>
+  <method>start</method>
+  <thread>16</thread>
+  <message>Start application ...</message>
+</record>
+<record>
+  <date>2016-04-01T16:42:32</date>
+  <millis>1459521752455</millis>
+  <sequence>1</sequence>
+  <logger>MainLogger</logger>
+  <level>INFO</level>
+  <class>Editor.Main</class>
+  <method>start</method>
+  <thread>16</thread>
+  <message>Application ready...</message>
+</record>
+</log>

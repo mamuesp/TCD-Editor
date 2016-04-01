@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<properties>
+    <colors>
+        <entry>
+            <key>tcdTextColorOn</key>
+            <value>#8b7c71</value>
+        </entry>
+    </colors>
+    <images>
+        <entry>
+            <key>tcdIconOn</key>
+            <value>resources/img/knob.png</value>
+        </entry>
+    </images>
+    <sizes>
+        <entry>
+            <key>tcdItemWidth</key>
+            <value>100.0</value>
+        </entry>
+        <entry>
+            <key>tcdItemHeight</key>
+            <value>100.0</value>
+        </entry>
+        <entry>
+            <key>tcdTextSize</key>
+            <value>20.0</value>
+        </entry>
+    </sizes>
+    <texts>
+        <entry>
+            <key>tcdLabel</key>
+            <value>A 270° knob!</value>
+        </entry>
+    </texts>
+</properties>

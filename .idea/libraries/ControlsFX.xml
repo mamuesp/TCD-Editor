@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="ControlsFX">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/ControlsFX" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib/ControlsFX" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib/ControlsFX" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/ControlsFX" recursive="false" type="SOURCES" />
+  </library>
+</component>
