@@ -1,8 +1,8 @@
 package Editor.Controller;
 
-import Editor.View.Items.Skins.IControlSkin;
-import Editor.Model.Items.TcdControl;
-import Editor.Model.Items.TcdInfoCtrl;
+import Editor.View.Skin.IControlSkin;
+import Editor.Model.TcdControl;
+import Editor.Model.TcdInfoCtrl;
 import Editor.Controller.DataIO.DataIOController;
 import Editor.Utils;
 import javafx.collections.FXCollections;

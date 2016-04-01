@@ -227,7 +227,7 @@
                                     <graphic>
                                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/gemicon/PNG/32x32/row_3/10.png" />
+                                                <Image url="@../../resources/gemicon/PNG/32x32/row_3/8.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>

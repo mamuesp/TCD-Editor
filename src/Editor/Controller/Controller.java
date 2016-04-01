@@ -6,8 +6,8 @@
 package Editor.Controller;
 
 import Editor.Controller.DataIO.DataIOController;
-import Editor.View.Items.Skins.IControlSkin;
-import Editor.Model.Items.TcdControl;
+import Editor.View.Skin.IControlSkin;
+import Editor.Model.TcdControl;
 import Editor.Utils;
 import com.mykong.core.OSValidator;
 import javafx.collections.ListChangeListener;
@@ -163,11 +163,11 @@ public class Controller implements Initializable {
 
     @FXML
     private void performDelete(ActionEvent event) {
-        if (! Controller.ItemSelection.getInstance().isEmpty()) {
+        if (! ItemSelection.getInstance().isEmpty()) {
             Alert confDlg = new Alert(Alert.AlertType.CONFIRMATION, "Delete the selected items?", ButtonType.YES, ButtonType.NO);
             confDlg.showAndWait();
             if (confDlg.getResult() == ButtonType.YES) {
-                Controller.ItemSelection.getInstance().deleteAll();
+                ItemSelection.getInstance().deleteAll();
             }
         }
         logger.log(Level.INFO, "Perform deletion of selected objects ...");
@@ -194,7 +194,7 @@ public class Controller implements Initializable {
         prepareMenus();
         DataIOController.getInstance().setRoot(basePane);
         setEventHandlers();
-        Controller.ItemSelection.getInstance().addListener(new ListChangeListener<Node>() {
+        ItemSelection.getInstance().addListener(new ListChangeListener<Node>() {
             @Override
             public void onChanged(ListChangeListener.Change change) {
                 final ObservableList selectedNodes = change.getList();
@@ -224,7 +224,7 @@ public class Controller implements Initializable {
                             Button srcButton = (Button) source;
                             Dragboard db = srcButton.startDragAndDrop(TransferMode.COPY_OR_MOVE);
 
-                            TcdControl newItem = Controller.ItemSelection.getInstance().generateNewItem(srcButton.getText(), basePane, true);
+                            TcdControl newItem = ItemSelection.getInstance().generateNewItem(srcButton.getText(), basePane, true);
                             logger.log(Level.INFO, "ID: " + newItem.getId());
                             db.setDragView(newItem.getImage());
                             newItem.setVisible(false);
@@ -251,7 +251,7 @@ public class Controller implements Initializable {
                             Control draggedItem = (Control) basePane.lookup("#" + itemId);
                             if (gestSrc instanceof TcdControl) {
                                 Point2D delta = ((TcdControl) draggedItem).calcDelta(event);
-                                Controller.ItemSelection.getInstance().moveSelected(delta);
+                                ItemSelection.getInstance().moveSelected(delta);
                             }
                             ((TcdControl) draggedItem).move(event);
                         }

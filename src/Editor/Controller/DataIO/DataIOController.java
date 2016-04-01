@@ -1,6 +1,6 @@
 package Editor.Controller.DataIO;
 
-import Editor.Model.Items.TcdInfoCtrl;
+import Editor.Model.TcdInfoCtrl;
 import Editor.Utils;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Alert;

@@ -1,6 +1,6 @@
 package Editor.Controller.DataIO;
 
-import Editor.Model.Items.TcdInfoCtrl;
+import Editor.Model.TcdInfoCtrl;
 
 import javax.xml.bind.annotation.*;
 import java.util.List;

@@ -1,6 +1,6 @@
 package Editor.Model;
 
-import Editor.Controller.Controller.ItemSelection;
+import Editor.Controller.ItemSelection;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.geometry.Bounds;

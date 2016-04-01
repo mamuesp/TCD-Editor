@@ -4,8 +4,9 @@
  */
 package Editor.Model.Items;
 
+import Editor.Model.TcdControl;
 import Editor.Model.TcdItemType;
-import Editor.View.Items.Skins.TcdSwitchSkin;
+import Editor.View.Skin.Items.TcdSwitchSkin;
 import javafx.scene.control.Skin;
 import javafx.scene.layout.Pane;
 
