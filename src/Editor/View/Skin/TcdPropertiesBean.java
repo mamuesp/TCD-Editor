@@ -97,8 +97,8 @@ public class TcdPropertiesBean implements java.io.Serializable {
     public ObservableList<PropertySheet.Item> getItems(String category) {
 
         ObservableList<PropertySheet.Item> items = FXCollections.observableArrayList();
-        //java.util.List<TcdPropertyItem> items = new ArrayList<TcdPropertyItem>();
         String[] currProps = null;
+
         final String catAll[] = {"colors", "images", "texts", "sizes"};
         final String catSingle[] = {category};
 
@@ -120,14 +120,10 @@ public class TcdPropertiesBean implements java.io.Serializable {
                     return items; // empty list
             }
 
-            //    Iterator it = currProps.entrySet().iterator();
-            //    while (it.hasNext()) {
             int index = 0;
             for (String value : currProps) {
-                //Map.Entry pair = (Map.Entry) it.next();
                 TcdPropertyItem propItem = new TcdPropertyItem(currCat, "idx-" + index, value, "Standard", skin.getSkinnable());
                 items.add(propItem);
-                //it.remove(); // avoids a ConcurrentModificationException
                 index++;
             }
         }

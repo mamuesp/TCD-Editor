@@ -2,7 +2,7 @@ package Editor.View.Skin;
 
 import Editor.Model.TcdControl;
 import Editor.View.Skin.IControlSkin;
-import Editor.View.Skin.TcdPropertiesBean;
+import Editor.View.Skin.TcdSkinEnums;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.SkinBase;
@@ -14,26 +14,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin, java.io.Serializable {
-
-    public enum SIZES {
-        tcdItemWidth,
-        tcdItemHeight,
-        tcdTextSize
-    }
-
-    public enum IMAGES {
-        tcdIconOn,
-        tcdIconOff
-    }
-
-    public enum TEXTS {
-        tcdLabel
-    }
-
-    public enum COLORS {
-        tcdTextColorOn,
-        tcdTextColorOff
-    }
 
     protected TcdPropertiesBean props = null;
     protected TcdControl control = null;
@@ -64,8 +44,8 @@ public class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin
         getChildren().clear();
         getChildren().add(tcdSkinBase);
 
-        double w = Double.parseDouble(props.getSizes(SIZES.tcdItemWidth.ordinal()));
-        double h = Double.parseDouble(props.getSizes(SIZES.tcdItemHeight.ordinal()));
+        double w = Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.ITEMWIDTH.ordinal()));
+        double h = Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.ITEMHEIGHT.ordinal()));
 
         control.setPrefSize(w, h);
     }

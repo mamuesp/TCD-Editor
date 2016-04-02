@@ -6,7 +6,7 @@ package Editor.Model.Items;
 
 import Editor.Model.TcdControl;
 import Editor.Model.TcdItemType;
-import Editor.View.Skin.Items.TcdKnobSkin;
+import Editor.View.Skin.Items.TcdFaderSkin;
 import javafx.scene.control.Skin;
 import javafx.scene.layout.Pane;
 
@@ -22,17 +22,17 @@ public class TcdFader extends TcdControl {
     public TcdFader(Pane parent, String id) {
         super(parent, id);
         type = TcdItemType.KNOB;
-        TcdKnobSkin mySkin = new TcdKnobSkin(this);
+        TcdFaderSkin mySkin = new TcdFaderSkin(this);
         setSkin(mySkin);
     }
 
     @Override
     public void refreshSkin() {
-        ((TcdKnobSkin) getSkin()).initializeGraphics();
+        ((TcdFaderSkin) getSkin()).initializeGraphics();
     }
 
-    private TcdKnobSkin getSkin(Skin skin) {
-        return (TcdKnobSkin) skin;
+    private TcdFaderSkin getSkin(Skin skin) {
+        return (TcdFaderSkin) skin;
     }
 
 }

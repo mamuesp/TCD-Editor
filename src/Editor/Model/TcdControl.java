@@ -22,16 +22,16 @@ import static java.lang.Math.abs;
 
 public abstract class TcdControl extends Control {
 
-    protected Pane container = null;
+    private Pane container = null;
+    private String imageName;
+    private Boolean selected = false;
+    private Boolean dirty = false;
+    private Boolean willSelect = false;
+    private Rectangle2D tcdSelRect = null;
+
     protected WritableImage image = null;
-    protected String imageName;
     protected double value = 0f;
     protected TcdItemType type = TcdItemType.NONE;
-
-    protected Boolean selected = false;
-    protected Boolean dirty = false;
-    protected Boolean willSelect = false;
-    protected Rectangle2D tcdSelRect = null;
     protected Node deco = null;
 
     public TcdControl() {

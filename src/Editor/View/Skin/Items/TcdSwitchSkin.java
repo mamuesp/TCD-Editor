@@ -3,6 +3,8 @@ package Editor.View.Skin.Items;
 import Editor.Model.Items.TcdSwitch;
 import Editor.View.Skin.IControlSkin;
 import Editor.View.Skin.TcdControlSkin;
+import Editor.View.Skin.TcdSkinEnums;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
@@ -22,24 +24,25 @@ public class TcdSwitchSkin extends TcdControlSkin implements IControlSkin {
 
     public void initDefaults() {
         ArrayList<String> tmpList = new ArrayList<String>();
+        this.props = (this.props == null) ? props : this.props;
 
-        tmpList.add(IMAGES.tcdIconOn.ordinal(), "resources/img/switch-on.png");
-        tmpList.add(IMAGES.tcdIconOff.ordinal(), "resources/img/switch-off.png");
+        tmpList.add(TcdSkinEnums.Images.ICONON.ordinal(), "resources/img/switch-on.png");
+        tmpList.add(TcdSkinEnums.Images.ICONOFF.ordinal(), "resources/img/switch-off.png");
         props.setImages(tmpList.toArray(new String[tmpList.size()]));
         tmpList.clear();
 
-        tmpList.add(COLORS.tcdTextColorOn.ordinal(), "#8b7c71");
-        tmpList.add(COLORS.tcdTextColorOff.ordinal(), "#8b7c71");
+        tmpList.add(TcdSkinEnums.Colors.TEXTCOLORON.ordinal(), "#8b7c71");
+        tmpList.add(TcdSkinEnums.Colors.TEXTCOLOROFF.ordinal(), "#8b7c71");
         props.setColors(tmpList.toArray(new String[tmpList.size()]));
         tmpList.clear();
 
-        tmpList.add(TEXTS.tcdLabel.ordinal(), "A switch!");
+        tmpList.add(TcdSkinEnums.Texts.LABEL.ordinal(), "A switch!");
         props.setTexts(tmpList.toArray(new String[tmpList.size()]));
         tmpList.clear();
 
-        tmpList.add(SIZES.tcdItemWidth.ordinal(), "100.0");
-        tmpList.add(SIZES.tcdItemHeight.ordinal(), "80.0");
-        tmpList.add(SIZES.tcdTextSize.ordinal(), "20.0");
+        tmpList.add(TcdSkinEnums.Sizes.ITEMWIDTH.ordinal(), "100.0");
+        tmpList.add(TcdSkinEnums.Sizes.ITEMHEIGHT.ordinal(), "80.0");
+        tmpList.add(TcdSkinEnums.Sizes.TEXTSIZE.ordinal(), "20.0");
         props.setSizes(tmpList.toArray(new String[tmpList.size()]));
         tmpList.clear();
 
@@ -54,16 +57,16 @@ public class TcdSwitchSkin extends TcdControlSkin implements IControlSkin {
         getChildren().clear();
         getChildren().add(tcdSkinBase);
 
-        double w = Double.parseDouble(props.getSizes(SIZES.tcdItemWidth.ordinal()));
-        double h = Double.parseDouble(props.getSizes(SIZES.tcdItemHeight.ordinal()));
+        double w = Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.ITEMWIDTH.ordinal()));
+        double h = Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.ITEMHEIGHT.ordinal()));
         control.setPrefSize(w, h);
 
         ImageView ivImg = null;
-        Font lblFont = new Font("Arial", Double.parseDouble(props.getSizes(SIZES.tcdTextSize.ordinal())));
-        Color fontColor = Color.web(props.getColors((control.getValue() != 0.0) ? COLORS.tcdTextColorOn.ordinal() : COLORS.tcdTextColorOff.ordinal()));
+        Font lblFont = new Font("Arial", Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.TEXTSIZE.ordinal())));
+        Color fontColor = Color.web(props.getColors((control.getValue() != 0.0) ? TcdSkinEnums.Colors.TEXTCOLORON.ordinal() : TcdSkinEnums.Colors.TEXTCOLOROFF.ordinal()));
         Rectangle2D vwRect;
         try {
-            String imgFile = props.getImages((control.getValue() != 0.0) ? IMAGES.tcdIconOn.ordinal() : IMAGES.tcdIconOff.ordinal());
+            String imgFile = props.getImages((control.getValue() != 0.0) ? TcdSkinEnums.Images.ICONON.ordinal() : TcdSkinEnums.Images.ICONOFF.ordinal());
             Image img = new Image(this.getClass().getClassLoader().getResourceAsStream(imgFile));
             ivImg = new ImageView(img);
 
@@ -79,7 +82,7 @@ public class TcdSwitchSkin extends TcdControlSkin implements IControlSkin {
             ivImg = null;
         }
 
-        Label label = new Label(props.getTexts(TEXTS.tcdLabel.ordinal()));
+        Label label = new Label(props.getTexts(TcdSkinEnums.Texts.LABEL.ordinal()));
         label.setGraphic(ivImg);
         label.setMaxWidth(Double.POSITIVE_INFINITY);
         label.setMaxHeight(Double.POSITIVE_INFINITY);

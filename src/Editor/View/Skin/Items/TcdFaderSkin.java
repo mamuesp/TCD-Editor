@@ -4,6 +4,7 @@ import Editor.Model.Items.TcdFader;
 import Editor.View.Skin.IControlSkin;
 import Editor.View.Skin.TcdControlSkin;
 import Editor.View.Skin.TcdPropertiesBean;
+import Editor.View.Skin.TcdSkinEnums;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
@@ -15,9 +16,9 @@ import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
 
-public class TcdKnobSkin extends TcdControlSkin implements IControlSkin {
+public class TcdFaderSkin extends TcdControlSkin implements IControlSkin {
 
-    public TcdKnobSkin(TcdFader control) {
+    public TcdFaderSkin(TcdFader control) {
         super(control);
     }
 
@@ -26,21 +27,21 @@ public class TcdKnobSkin extends TcdControlSkin implements IControlSkin {
         this.props = (this.props == null) ? props : this.props;
         ArrayList<String> tmpList = new ArrayList<String>();
 
-        tmpList.add(IMAGES.tcdIconOn.ordinal(), "resources/img/knob.png");
+        tmpList.add(TcdSkinEnums.Images.ICONON.ordinal(), "resources/img/knob.png");
         props.setImages(tmpList.toArray(new String[tmpList.size()]));
         tmpList.clear();
 
-        tmpList.add(COLORS.tcdTextColorOn.ordinal(), "#8b7c71");
+        tmpList.add(TcdSkinEnums.Colors.TEXTCOLORON.ordinal(), "#8b7c71");
         props.setColors(tmpList.toArray(new String[tmpList.size()]));
         tmpList.clear();
 
-        tmpList.add(TEXTS.tcdLabel.ordinal(), "A 270° knob!");
+        tmpList.add(TcdSkinEnums.Texts.LABEL.ordinal(), "A 270° knob!");
         props.setTexts(tmpList.toArray(new String[tmpList.size()]));
         tmpList.clear();
 
-        tmpList.add(SIZES.tcdItemWidth.ordinal(), "100.0");
-        tmpList.add(SIZES.tcdItemHeight.ordinal(), "100.0");
-        tmpList.add(SIZES.tcdTextSize.ordinal(), "20.0");
+        tmpList.add(TcdSkinEnums.Sizes.ITEMWIDTH.ordinal(), "100.0");
+        tmpList.add(TcdSkinEnums.Sizes.ITEMHEIGHT.ordinal(), "100.0");
+        tmpList.add(TcdSkinEnums.Sizes.TEXTSIZE.ordinal(), "20.0");
         props.setSizes(tmpList.toArray(new String[tmpList.size()]));
         tmpList.clear();
     }
@@ -52,12 +53,12 @@ public class TcdKnobSkin extends TcdControlSkin implements IControlSkin {
         // draw switch area
 
         ImageView ivImg = null;
-        Color fontColor = Color.web(props.getColors(COLORS.tcdTextColorOn.ordinal()));
+        Color fontColor = Color.web(props.getColors(TcdSkinEnums.Colors.TEXTCOLORON.ordinal()));
 
-        Font lblFont = new Font("Arial", Double.parseDouble(props.getSizes(SIZES.tcdTextSize.ordinal())));
+        Font lblFont = new Font("Arial", Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.TEXTSIZE.ordinal())));
         Rectangle2D vwRect;
         try {
-            String imgFile = props.getImages(IMAGES.tcdIconOn.ordinal());
+            String imgFile = props.getImages(TcdSkinEnums.Images.ICONON.ordinal());
             Image img = new Image(this.getClass().getClassLoader().getResourceAsStream(imgFile));
             ivImg = new ImageView(img);
 
@@ -73,7 +74,7 @@ public class TcdKnobSkin extends TcdControlSkin implements IControlSkin {
             ivImg = null;
         }
 
-        Label label = new Label(props.getTexts(TEXTS.tcdLabel.ordinal()));
+        Label label = new Label(props.getTexts(TcdSkinEnums.Texts.LABEL.ordinal()));
         label.setGraphic(ivImg);
         label.setMaxWidth(Double.POSITIVE_INFINITY);
         label.setMaxHeight(Double.POSITIVE_INFINITY);

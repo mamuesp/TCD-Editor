@@ -4,6 +4,7 @@ import Editor.View.Skin.IControlSkin;
 import Editor.Controller.ItemSelection;
 import Editor.Utils;
 import Editor.View.Skin.TcdControlSkin;
+import Editor.View.Skin.TcdSkinEnums;
 import com.sun.javafx.iio.ImageStorage;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Rectangle2D;
@@ -84,7 +85,7 @@ public class TcdInfoCtrl {
         int index = 0;
         for (String image : imageList) {
             //Map.Entry pair = (Map.Entry) it.next();
-            String imgName = (String) TcdControlSkin.IMAGES.values()[index].name();
+            String imgName = (String) TcdSkinEnums.Images.values()[index].name();
             String imgValue = (String) image;
 
             String result = "";
