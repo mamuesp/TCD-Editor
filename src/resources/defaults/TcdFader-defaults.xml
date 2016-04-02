@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<properties>
+    <prop_colors>#8b7c71</prop_colors>
+    <prop_images>resources/img/knob.png</prop_images>
+    <prop_sizes>100.0</prop_sizes>
+    <prop_sizes>100.0</prop_sizes>
+    <prop_sizes>20.0</prop_sizes>
+    <prop_texts>A 270° knob!</prop_texts>
+</properties>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<properties>
+    <prop_colors>#8b7c71</prop_colors>
+    <prop_colors>#FFFFFF</prop_colors>
+    <prop_images>resources/img/button-on.png</prop_images>
+    <prop_images>resources/img/button-off.png</prop_images>
+    <prop_sizes>150.0</prop_sizes>
+    <prop_sizes>40.0</prop_sizes>
+    <prop_sizes>20.0</prop_sizes>
+    <prop_texts>A button!</prop_texts>
+</properties>
