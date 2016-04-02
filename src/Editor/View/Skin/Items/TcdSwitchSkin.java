@@ -12,6 +12,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
+import java.util.ArrayList;
+
 public class TcdSwitchSkin extends TcdControlSkin implements IControlSkin {
 
     public TcdSwitchSkin(TcdSwitch control) {
@@ -19,16 +21,29 @@ public class TcdSwitchSkin extends TcdControlSkin implements IControlSkin {
     }
 
     public void initDefaults() {
-/*
-        props.getImages().put("tcdIconOn", "resources/img/switch-on.png");
-        props.getImages().put("tcdIconOff", "resources/img/switch-off.png");
-        props.getColors().put("tcdTextColorOn", "#8b7c71");
-        props.getColors().put("tcdTextColorOff", "#8b7c71");
-        props.getTexts().put("tcdLabel", "A switch!");
-        props.getSizes().put("tcdItemWidth", "100.0");
-        props.getSizes().put("tcdItemHeight", "80.0");
-        props.getSizes().put("tcdTextSize", "20.0");
-*/
+        ArrayList<String> tmpList = new ArrayList<String>();
+
+        tmpList.add(IMAGES.tcdIconOn.ordinal(), "resources/img/switch-on.png");
+        tmpList.add(IMAGES.tcdIconOff.ordinal(), "resources/img/switch-off.png");
+        props.setImages(tmpList.toArray(new String[tmpList.size()]));
+        tmpList.clear();
+
+        tmpList.add(COLORS.tcdTextColorOn.ordinal(), "#8b7c71");
+        tmpList.add(COLORS.tcdTextColorOff.ordinal(), "#8b7c71");
+        props.setColors(tmpList.toArray(new String[tmpList.size()]));
+        tmpList.clear();
+
+        tmpList.add(TEXTS.tcdLabel.ordinal(), "A switch!");
+        props.setTexts(tmpList.toArray(new String[tmpList.size()]));
+        tmpList.clear();
+
+        tmpList.add(SIZES.tcdItemWidth.ordinal(), "100.0");
+        tmpList.add(SIZES.tcdItemHeight.ordinal(), "80.0");
+        tmpList.add(SIZES.tcdTextSize.ordinal(), "20.0");
+        props.setSizes(tmpList.toArray(new String[tmpList.size()]));
+        tmpList.clear();
+
+        super.initDefaults();
     }
 
     public void initializeGraphics() {
@@ -39,16 +54,16 @@ public class TcdSwitchSkin extends TcdControlSkin implements IControlSkin {
         getChildren().clear();
         getChildren().add(tcdSkinBase);
 
-        double w = Double.parseDouble(props.getSizes().get("tcdItemWidth"));
-        double h = Double.parseDouble(props.getSizes().get("tcdItemHeight"));
+        double w = Double.parseDouble(props.getSizes(SIZES.tcdItemWidth.ordinal()));
+        double h = Double.parseDouble(props.getSizes(SIZES.tcdItemHeight.ordinal()));
         control.setPrefSize(w, h);
 
         ImageView ivImg = null;
-        Font lblFont = new Font("Arial", Double.parseDouble(props.getSizes().get("tcdTextSize")));
-        Color fontColor = Color.web(props.getColors().get((control.getValue() != 0.0) ? "tcdTextColorOn" : "tcdTextColorOff"));
+        Font lblFont = new Font("Arial", Double.parseDouble(props.getSizes(SIZES.tcdTextSize.ordinal())));
+        Color fontColor = Color.web(props.getColors((control.getValue() != 0.0) ? COLORS.tcdTextColorOn.ordinal() : COLORS.tcdTextColorOff.ordinal()));
         Rectangle2D vwRect;
         try {
-            String imgFile = props.getImages().get((control.getValue() != 0.0) ? "tcdIconOn" : "tcdIconOff");
+            String imgFile = props.getImages((control.getValue() != 0.0) ? IMAGES.tcdIconOn.ordinal() : IMAGES.tcdIconOff.ordinal());
             Image img = new Image(this.getClass().getClassLoader().getResourceAsStream(imgFile));
             ivImg = new ImageView(img);
 
@@ -64,7 +79,7 @@ public class TcdSwitchSkin extends TcdControlSkin implements IControlSkin {
             ivImg = null;
         }
 
-        Label label = new Label(props.getTexts().get("tcdLabel"));
+        Label label = new Label(props.getTexts(TEXTS.tcdLabel.ordinal()));
         label.setGraphic(ivImg);
         label.setMaxWidth(Double.POSITIVE_INFINITY);
         label.setMaxHeight(Double.POSITIVE_INFINITY);

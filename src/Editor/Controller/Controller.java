@@ -199,6 +199,7 @@ public class Controller implements Initializable {
             public void onChanged(ListChangeListener.Change change) {
                 final ObservableList selectedNodes = change.getList();
                 if (selectedNodes.size() == 1) {
+                    propVBox.getChildren().clear();
                     TcdControl ctrl = (TcdControl) selectedNodes.get(0);
                     PropertySheet ps = new PropertySheet();
                     PropertySheet propertySheet = new PropertySheet(((IControlSkin) ctrl.getSkin()).getProperties().getItems("all"));
@@ -328,7 +329,7 @@ public class Controller implements Initializable {
 
     private void prepareMenus() {
         mnuFileSepWin.setVisible(OSValidator.isWindows());
-        mnuFileSepWin.setDisable(!OSValidator.isWindows());
+        mnuFileSepWin.setDisable(!com.mykong.core.OSValidator.isWindows());
         mnuFileQuitWin.setVisible(OSValidator.isWindows());
         mnuFileQuitWin.setDisable(!OSValidator.isWindows());
         if (OSValidator.isMac()) {

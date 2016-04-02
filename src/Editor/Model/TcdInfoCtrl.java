@@ -3,6 +3,8 @@ package Editor.Model;
 import Editor.View.Skin.IControlSkin;
 import Editor.Controller.ItemSelection;
 import Editor.Utils;
+import Editor.View.Skin.TcdControlSkin;
+import com.sun.javafx.iio.ImageStorage;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
@@ -12,6 +14,7 @@ import javax.imageio.ImageIO;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -27,8 +30,8 @@ import java.util.Map;
 public class TcdInfoCtrl {
 
     private String type;
-    private Map<String, String> texts;
-    private Map<String, String> images;
+    private String[] texts;
+    private String[] images;
     private String ctrlClassname;
     private Rectangle2D ctrlBounds;
     private Double value;
@@ -54,12 +57,11 @@ public class TcdInfoCtrl {
         }
     }
 
-
-    public Map<String, String> getTexts() {
+    public String[] getTexts() {
         return ((IControlSkin) ctrl.getSkin()).getTexts();
     }
 
-    public void setTexts(Map<String, String> value) {
+    public void setTexts(String[] value) {
         ((IControlSkin) ctrl.getSkin()).setTexts(value);
     }
 
@@ -73,15 +75,17 @@ public class TcdInfoCtrl {
     }
 
     @XmlElement(name = "ctrl_images")
-    public Map<String, String> getImages() {
-        Map<String, String> storeList = new HashMap<String, String>();
-        Map<String, String> imageList = ((IControlSkin) ctrl.getSkin()).getImages();
+    public String[] getImages() {
+        ArrayList<String> storeList = new ArrayList<>();
+        String[] imageList = ((IControlSkin) ctrl.getSkin()).getImages();
 
-        Iterator it = imageList.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            String imgName = (String) pair.getKey();
-            String imgValue = (String) pair.getValue();
+        //Iterator it = imageList.entrySet().iterator();
+        //while (it.hasNext()) {
+        int index = 0;
+        for (String image : imageList) {
+            //Map.Entry pair = (Map.Entry) it.next();
+            String imgName = (String) TcdControlSkin.IMAGES.values()[index].name();
+            String imgValue = (String) image;
 
             String result = "";
             File fPath = Utils.getControlsFilePath();
@@ -99,15 +103,16 @@ public class TcdInfoCtrl {
                 } catch (Exception s) {
                     result = "Image: " + result + " not saved.";
                 }
-                storeList.put(imgName, result);
+                storeList.add(index, result);
             }
-            it.remove(); // avoids a ConcurrentModificationException
+            //it.remove(); // avoids a ConcurrentModificationException
+            index++;
         }
 
-        return storeList;
+        return storeList.toArray(new String[storeList.size()]);
     }
 
-    public void setImages(Map<String, String> value) {
+    public void setImages(String[] value) {
         if (this.ctrl != null) {
             ((IControlSkin) ctrl.getSkin()).setImages(value);
         }

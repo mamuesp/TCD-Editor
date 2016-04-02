@@ -5,7 +5,7 @@ public enum TcdItemType {
     NONE("TcdControl"),
     BUTTON("TcdButton"),
     SWITCH("TcdSwitch"),
-    KNOB("TcdKnob");
+    KNOB("TcdFader");
 
     private String label;
 

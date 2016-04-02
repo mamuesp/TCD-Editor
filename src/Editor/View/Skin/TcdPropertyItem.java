@@ -1,9 +1,16 @@
 package Editor.View.Skin;
 
 import Editor.Model.TcdControl;
+import impl.org.controlsfx.i18n.Localization;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Alert;
 import org.controlsfx.control.PropertySheet;
+import org.controlsfx.property.editor.PropertyEditor;
 
+import java.beans.PropertyDescriptor;
+import java.beans.PropertyVetoException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Optional;
 
 public class TcdPropertyItem implements PropertySheet.Item {
@@ -49,11 +56,12 @@ public class TcdPropertyItem implements PropertySheet.Item {
 
     @Override
     public void setValue(Object value) {
-        _value = (String) value;
+        _value = (Object) value;
     }
 
     @Override
     public Optional<ObservableValue<? extends Object>> getObservableValue() {
         return null;
     }
+
 }

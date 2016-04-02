@@ -309,9 +309,9 @@
                                                                 <Cursor fx:constant="OPEN_HAND" />
                                                             </cursor>
                                                         </Button>
-                                                        <Button fx:id="itemKnob" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Editor.Model.Items.TcdKnob" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                        <Button fx:id="itemKnob" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Editor.Model.Items.TcdFader" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                             <graphic>
-                                                                <ImageView id="Editor.Model.Items.TcdKnob" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView id="Editor.Model.Items.TcdFader" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                                                                     <image>
                                                                         <Image url="@../../resources/actions/widget-gtk-knob.png" />
                                                                     </image>

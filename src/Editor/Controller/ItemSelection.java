@@ -21,7 +21,6 @@ import java.util.*;
 
 public class ItemSelection {
 
-    private static boolean isDragged = false;
     private static ItemSelection instance;
     private static List<Node> nodeSelection = new ArrayList<Node>();
     private static ObservableList<Node> selectedNodes = FXCollections.observableList(nodeSelection);
@@ -105,7 +104,7 @@ public class ItemSelection {
     }
 
     public void clearSelection() {
-        while (! isDragged && ! selectedNodes.isEmpty()) {
+        while (! selectedNodes.isEmpty()) {
             remove((TcdControl) selectedNodes.iterator().next());
         }
     }

@@ -2,7 +2,7 @@ package Editor.View.Skin;
 
 import Editor.Model.TcdControl;
 import Editor.View.Skin.IControlSkin;
-import Editor.View.Skin.TcdProperties;
+import Editor.View.Skin.TcdPropertiesBean;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.SkinBase;
@@ -13,9 +13,29 @@ import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin {
+public class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin, java.io.Serializable {
 
-    protected TcdProperties props = null;
+    public enum SIZES {
+        tcdItemWidth,
+        tcdItemHeight,
+        tcdTextSize
+    }
+
+    public enum IMAGES {
+        tcdIconOn,
+        tcdIconOff
+    }
+
+    public enum TEXTS {
+        tcdLabel
+    }
+
+    public enum COLORS {
+        tcdTextColorOn,
+        tcdTextColorOff
+    }
+
+    protected TcdPropertiesBean props = null;
     protected TcdControl control = null;
 
     protected BorderPane tcdSkinBase = new BorderPane();
@@ -23,15 +43,19 @@ public class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin
 
     public TcdControlSkin(final TcdControl control) {
         super(control);
-        this.props = new TcdProperties(this);
+        this.props = new TcdPropertiesBean(this);
         this.control = control;
         initDefaults();
         initializeGraphics();
     }
 
     public void initDefaults() {
-        //props.store();
-    }
+        // do nothing
+    };
+
+    public void loadDefaults(TcdPropertiesBean tcdPropertiesBean) {
+        // do nothingTcdPropertiesBean props
+    };
 
     public void initializeGraphics() {
 
@@ -40,8 +64,8 @@ public class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin
         getChildren().clear();
         getChildren().add(tcdSkinBase);
 
-        double w = Double.parseDouble(props.getSizes().get("tcdItemWidth"));
-        double h = Double.parseDouble(props.getSizes().get("tcdItemHeight"));
+        double w = Double.parseDouble(props.getSizes(SIZES.tcdItemWidth.ordinal()));
+        double h = Double.parseDouble(props.getSizes(SIZES.tcdItemHeight.ordinal()));
 
         control.setPrefSize(w, h);
     }
@@ -100,52 +124,49 @@ public class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin
     }
 
     @Override
-    public TcdProperties getProperties() {
+    public TcdPropertiesBean getProperties() {
         return props;
     }
 
+
     @Override
-    public Map<String, String> getColors() {
+    public String[] getColors() {
         return this.props.getColors();
     }
 
     @Override
-    public void setColors(Map<String, String> colors) {
-        this.props.getColors().clear();
-        this.props.getColors().putAll(colors);
+    public void setColors(String[] value) {
+        this.props.setColors(value);
     }
 
     @Override
-    public Map<String, String> getImages() {
+    public String[] getImages() {
         return this.props.getImages();
     }
 
     @Override
-    public void setImages(Map<String, String> images) {
-        this.props.getImages().clear();
-        this.props.getImages().putAll(images);
+    public void setImages(String[] value) {
+        this.props.setImages(value);
     }
 
     @Override
-    public Map<String, String> getTexts() {
+    public String[] getTexts() {
         return this.props.getTexts();
     }
 
     @Override
-    public void setTexts(Map<String, String> texts) {
-        this.props.getTexts().clear();
-        this.props.getTexts().putAll(texts);
+    public void setTexts(String[] value) {
+        this.props.setTexts(value);
     }
 
     @Override
-    public Map<String, String> getSizes() {
+    public String[] getSizes() {
         return this.props.getSizes();
     }
 
     @Override
-    public void setSizes(Map<String, String> sizes) {
-        this.props.getSizes().clear();
-        this.props.getSizes().putAll(sizes);
+    public void setSizes(String[] value) {
+        this.props.setSizes(value);
     }
 
 }
