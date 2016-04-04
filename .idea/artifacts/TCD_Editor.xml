@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="TCD-Editor">
+    <output-path>$PROJECT_DIR$/out/artifacts/TCD_Editor</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="Editor.Main" />
+        <option name="description" value="" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="TCD-Editor" />
+        <option name="vendor" value="Manfred Mueller-Spaeth" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="TCD_Editor.jar">
+        <element id="module-output" name="TCD-Editor" />
+      </element>
+    </root>
+  </artifact>
+</component>
