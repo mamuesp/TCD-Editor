@@ -11,6 +11,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Part of project: TCD-Editor
@@ -60,6 +62,12 @@ public class TcdProperties {
             this.skin.loadDefaults(this);
             dataIO.getInstance().savePropertyDataToFile(defWrite, properties);
         }
+
+        // add some specific properties ...
+
+        String id = this.skin.getSkinnable().getInnerID();
+        this.add("control", "Control ID", id, "0", "is a property", "info");
+
     }
 
     public void add(String category, String name, String value, String index, String description, String type) {
@@ -92,35 +100,25 @@ public class TcdProperties {
         return items;
     }
 
-    public TableView getEditor() {
+    public TableView getEditor(TableView tableIn) {
 
-        TableView<TcdPropertyItem> table = new TableView();
+        TableView<TcdPropertyItem> table = (tableIn == null) ? new TableView<TcdPropertyItem>() : tableIn;
 
         table.setEditable(true);
+        final ObservableList<TcdPropertyItem> data = FXCollections.observableArrayList(getItems());
+        table.setItems(data);
+        table.getColumns().clear();
 
-        TableColumn categoryCol = new TableColumn("Category");
-        categoryCol.setCellValueFactory(new PropertyValueFactory<TcdPropertyItem, String>("category"));
+        String[] tags = {"Category", "Name", "Value", "IDX", "Description", "Type"};
+        List<String> show = Arrays.asList("Category", "Name", "Value");
 
-        TableColumn nameCol = new TableColumn("Name");
-        nameCol.setCellValueFactory(new PropertyValueFactory<TcdPropertyItem, String>("name"));
-
-        TableColumn valueCol = new TableColumn("Value");
-        valueCol.setCellValueFactory(new PropertyValueFactory<TcdPropertyItem, String>("value"));
-
-        TableColumn idxCol = new TableColumn("IDX");
-        idxCol.setCellValueFactory(new PropertyValueFactory<TcdPropertyItem, String>("idx"));
-
-        TableColumn descriptionCol = new TableColumn("Description");
-        descriptionCol.setCellValueFactory(new PropertyValueFactory<TcdPropertyItem, String>("description"));
-
-        TableColumn typeCol = new TableColumn("Type");
-        typeCol.setCellValueFactory(new PropertyValueFactory<TcdPropertyItem, String>("type"));
-
-        idxCol.setVisible(false);
-        descriptionCol.setVisible(false);
-        typeCol.setVisible(false);
-
-        table.getColumns().addAll(nameCol, valueCol, typeCol, idxCol, descriptionCol, typeCol);
+        for (String currTag : tags) {
+            TableColumn newCol = new TableColumn(currTag);
+            newCol.setCellValueFactory(new PropertyValueFactory<>(currTag.toLowerCase()));
+            newCol.getStyleClass().add("col-" + currTag.toLowerCase());
+            newCol.setVisible(show.contains(currTag));
+            table.getColumns().add(newCol);
+        }
 
         return table;
     }

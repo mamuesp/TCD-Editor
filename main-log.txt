@@ -2,8 +2,8 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2016-04-04T13:18:35</date>
-  <millis>1459768715441</millis>
+  <date>2016-04-04T23:08:15</date>
+  <millis>1459804095629</millis>
   <sequence>0</sequence>
   <logger>MainLogger</logger>
   <level>INFO</level>
@@ -13,8 +13,8 @@
   <message>Start application ...</message>
 </record>
 <record>
-  <date>2016-04-04T13:18:36</date>
-  <millis>1459768716794</millis>
+  <date>2016-04-04T23:08:16</date>
+  <millis>1459804096950</millis>
   <sequence>1</sequence>
   <logger>MainLogger</logger>
   <level>INFO</level>

@@ -9,7 +9,10 @@ import Editor.Controller.DataIO.DataIOController;
 import Editor.View.Skin.IControlSkin;
 import Editor.Model.TcdControl;
 import Editor.Utils;
+import Editor.View.Skin.TcdProperties;
+import Editor.View.Skin.TcdPropertyItem;
 import com.mykong.core.OSValidator;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -51,13 +54,13 @@ public class Controller implements Initializable {
     @FXML
     public Pane basePane;
     @FXML
-    public GridPane itemGrid;
+    public FlowPane itemGrid;
     @FXML
     public AnchorPane propEditor;
     @FXML
     public VBox propVBox;
     @FXML
-    public TableView tvProperties;
+    public TableView propTable;
 
     @FXML
     private void openGuiProject(ActionEvent event) {
@@ -193,16 +196,20 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         prepareMenus();
-        DataIOController.getInstance().setRoot(basePane);
+        DataIOController.setRoot(basePane);
         setEventHandlers();
         ItemSelection.getInstance().addListener(new ListChangeListener<Node>() {
             @Override
             public void onChanged(ListChangeListener.Change change) {
                 final ObservableList selectedNodes = change.getList();
                 if (selectedNodes.size() == 1) {
-                    tvProperties.getColumns().clear();
                     TcdControl ctrl = (TcdControl) selectedNodes.get(0);
-                    ((IControlSkin) ctrl.getSkin()).getProps().getItems();
+                    propTable.setVisible(false);
+                    ((IControlSkin) ctrl.getSkin()).getProps().getEditor(propTable);
+                    propTable.setVisible(true);
+                } else {
+                    propTable.setVisible(false);
+                    propTable.getColumns().clear();
                 }
             }
         });

@@ -53,9 +53,9 @@ public class Utils {
         java.util.Date now = new java.util.Date();
         Random randomGenerator = new Random();
         int randomInt = randomGenerator.nextInt(1000);
-        long nowTS = ((long) System.currentTimeMillis() * 1000) + randomInt;
+        String nowTS = Long.toString(System.nanoTime()) + "-" + Long.toString(randomInt);
 
-        return Long.toString(nowTS);
+        return nowTS;
     }
 
     public static File getControlsFilePath() {

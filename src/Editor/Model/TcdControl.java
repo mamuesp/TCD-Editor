@@ -1,6 +1,7 @@
 package Editor.Model;
 
 import Editor.Controller.ItemSelection;
+import Editor.Utils;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.geometry.Bounds;
@@ -22,6 +23,7 @@ import static java.lang.Math.abs;
 
 public abstract class TcdControl extends Control {
 
+    private String innerID = Utils.generateId();
     private Pane container = null;
     private String imageName;
     private Boolean selected = false;
@@ -42,7 +44,6 @@ public abstract class TcdControl extends Control {
 
         this.type = TcdItemType.NONE;
         this.setPrefSize(200, 40);
-        //this.setSelRect(new Rectangle2D(0, 0, 200, 40));
         this.container = parent;
 
         int newX = (int) 0;
@@ -59,6 +60,10 @@ public abstract class TcdControl extends Control {
         }
 
         this.setCache(true);
+    }
+
+    public String getInnerID() {
+        return innerID;
     }
 
     @Override
@@ -98,38 +103,17 @@ public abstract class TcdControl extends Control {
 
     public abstract void refreshSkin();
 
-    public String getImageAsStr() {
-        /*
-        BufferedImage img = SwingFXUtils.fromFXImage(getImage(), null);
-        String data = Utils.compressAndEncode(img, "png");
-        */
-        return this.imageName;
-    }
-
-    public void setImageAsStr(String value) {
-        /*
-            BufferedImage imgDec = Utils.decompressAndDecode(value);
-            this.image = SwingFXUtils.toFXImage(imgDec, null);
-        */
-        this.imageName = value;
-    }
-
     public WritableImage getImage() {
         if (image == null || dirty) {
             boolean visible = this.isVisible();
             this.setVisible(true);
             SnapshotParameters sp = new SnapshotParameters();
             sp.setFill(Color.TRANSPARENT);
-            this.setImage(this.snapshot(sp, null));
+            this.image = this.snapshot(sp, null) ;
             this.setVisible(visible);
             dirty = false;
         }
         return image;
-    }
-
-    public void setImage(WritableImage image) {
-        this.image = image;
-        dirty = false;
     }
 
     public Boolean getSelected() {

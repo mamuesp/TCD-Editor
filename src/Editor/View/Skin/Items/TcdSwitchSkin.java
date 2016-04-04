@@ -32,7 +32,7 @@ public class TcdSwitchSkin extends TcdControlSkin implements IControlSkin {
 
         props.add("sizes", "ItemWidth", "100.0", "0", "is a property", "measure");
         props.add("sizes", "ItemHeight", "80.0", "1", "is a property", "measure");
-        props.add("sizes", "TextSize", "20,0", "2", "is a property", "measure");
+        props.add("sizes", "TextSize", "20.0", "2", "is a property", "measure");
 
         return props.getProperties();
     }

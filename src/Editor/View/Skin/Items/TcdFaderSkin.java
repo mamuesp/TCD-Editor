@@ -30,7 +30,7 @@ public class TcdFaderSkin extends TcdControlSkin implements IControlSkin {
 
         props.add("sizes", "ItemWidth", "100.0", "0", "is a property", "measure");
         props.add("sizes", "ItemHeight", "100.0", "1", "is a property", "measure");
-        props.add("sizes", "TextSize", "20,0", "2", "is a property", "measure");
+        props.add("sizes", "TextSize", "20.0", "2", "is a property", "measure");
 
         return props.getProperties();
     }
@@ -45,7 +45,7 @@ public class TcdFaderSkin extends TcdControlSkin implements IControlSkin {
             ImageView ivImg = null;
             Color fontColor = Color.web(props.getValue("colors", "TextColorOn"));
 
-            Font lblFont = new Font("Arial", Double.parseDouble(props.getValue("sizes", "Textsize")));
+            Font lblFont = new Font("Arial", Double.parseDouble(props.getValue("sizes", "TextSize")));
             Rectangle2D vwRect;
             try {
                 String imgFile = props.getValue("images", "IconOn");
