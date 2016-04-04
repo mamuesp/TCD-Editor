@@ -1,10 +1,9 @@
 package Editor.View.Skin.Items;
 
 import Editor.Model.Items.TcdButton;
-import Editor.View.Skin.IControlSkin;
-import Editor.View.Skin.TcdControlSkin;
-import Editor.View.Skin.TcdPropertiesBean;
-import Editor.View.Skin.TcdSkinEnums;
+import Editor.Model.TcdControl;
+import Editor.View.Skin.*;
+import Editor.View.Skin.TcdProperties;
 import javafx.geometry.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,31 +21,21 @@ public class TcdButtonSkin extends TcdControlSkin implements IControlSkin {
         super(control);
     }
 
-    public void loadDefaults(TcdPropertiesBean props) {
-        ArrayList<String> tmpList = new ArrayList<String>();
-        this.props = (this.props == null) ? props : this.props;
+    @Override
+    public ArrayList<TcdPropertyItem> loadDefaults(TcdProperties props) {
+        props.add("images", "IconOn", "resources/img/button-on.png", "0", "is a property", "filename");
+        props.add("images", "IconOff", "resources/img/button-off.png", "1", "is a property", "filename");
 
-        tmpList.add(TcdSkinEnums.Images.ICONON.ordinal(), "resources/img/button-on.png");
-        tmpList.add(TcdSkinEnums.Images.ICONOFF.ordinal(), "resources/img/button-off.png");
-        props.setImages(tmpList.toArray(new String[tmpList.size()]));
-        tmpList.clear();
+        props.add("colors", "TextColorOn", "#8b7c71", "0", "is a property", "number");
+        props.add("colors", "TextColorOff", "#FFFFFF", "1", "is a property", "number");
 
-        tmpList.add(TcdSkinEnums.Colors.TEXTCOLORON.ordinal(), "#8b7c71");
-        tmpList.add(TcdSkinEnums.Colors.TEXTCOLOROFF.ordinal(), "#FFFFFF");
-        props.setColors(tmpList.toArray(new String[tmpList.size()]));
-        tmpList.clear();
+        props.add("texts", "Label", "A button!", "0", "is a property", "text");
 
-        tmpList.add(TcdSkinEnums.Texts.LABEL.ordinal(), "A button!");
-        props.setTexts(tmpList.toArray(new String[tmpList.size()]));
-        tmpList.clear();
+        props.add("sizes", "ItemWidth", "150.0", "0", "is a property", "measure");
+        props.add("sizes", "ItemHeight", "40.0", "1", "is a property", "measure");
+        props.add("sizes", "TextSize", "20,0", "2", "is a property", "measure");
 
-        tmpList.add(TcdSkinEnums.Sizes.ITEMWIDTH.ordinal(), "150.0");
-        tmpList.add(TcdSkinEnums.Sizes.ITEMHEIGHT.ordinal(), "40.0");
-        tmpList.add(TcdSkinEnums.Sizes.TEXTSIZE.ordinal(), "20.0");
-        props.setSizes(tmpList.toArray(new String[tmpList.size()]));
-        tmpList.clear();
-
-        super.initDefaults();
+        return props.getProperties();
     }
 
     public void initializeGraphics() {
@@ -54,16 +43,14 @@ public class TcdButtonSkin extends TcdControlSkin implements IControlSkin {
         super.initializeGraphics();
 
         ImageView ivImg = null;
-        int colIdx = (control.getValue() != 0.0) ? TcdSkinEnums.Colors.TEXTCOLORON.ordinal() : TcdSkinEnums.Colors.TEXTCOLOROFF.ordinal();
-        Color fontColor = Color.web(props.getColors(colIdx));
-        Text label = new Text(props.getTexts(TcdSkinEnums.Texts.LABEL.ordinal()));
-        Font lblFont = new Font("Arial", Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.TEXTSIZE.ordinal())));
+        Color fontColor = Color.web(props.getValue("colors", (control.getValue() != 0.0) ? "TextColorOn" : "TextColorOff"));
+        Text label = new Text(props.getValue("texts", "Label"));
+        Font lblFont = new Font("Arial", Double.parseDouble(props.getValue("sizes", "TextSize")));
         Rectangle2D vwRect;
 
         tcdSkinBase.getChildren().clear();
         try {
-            int imgIdx = (control.getValue() != 0.0) ? TcdSkinEnums.Images.ICONON.ordinal() : TcdSkinEnums.Images.ICONOFF.ordinal();
-            String imgFile = props.getImages(imgIdx);
+            String imgFile = props.getValue("images", (control.getValue() != 0.0) ? "IconOn" : "IconOff");
             Image img = new Image(this.getClass().getClassLoader().getResourceAsStream(imgFile));
             ivImg = new ImageView(img);
 
@@ -82,7 +69,7 @@ public class TcdButtonSkin extends TcdControlSkin implements IControlSkin {
         }
 
         label.setPickOnBounds(false);
-        label.prefHeight(Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.TEXTSIZE.ordinal())));
+        label.prefHeight(Double.parseDouble(props.getValue("sizes", "TextSize")));
         label.setTextOrigin(VPos.CENTER);
         label.setFont(lblFont);
         label.setFill(fontColor);

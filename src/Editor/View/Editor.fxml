@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.shape.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.*?>
@@ -10,224 +7,285 @@
 <?import javafx.scene.input.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.Rectangle?>
-
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="600" prefWidth="1065.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Editor.Controller.Controller">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="600" prefWidth="1065.0" xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Editor.Controller.Controller">
     <children>
-        <BorderPane layoutX="164.0" layoutY="46.0" prefHeight="600.0" prefWidth="1065.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane layoutX="164.0" layoutY="46.0" prefHeight="600.0" prefWidth="1065.0" AnchorPane.bottomAnchor="0.0"
+                    AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
                 <VBox BorderPane.alignment="CENTER">
                     <children>
                         <MenuBar style="-fx-font-family: Helvetica Neue Regular;">
                             <menus>
-                                <Menu id="mnuSpecMac" fx:id="mnuSpecMac" disable="false" mnemonicParsing="false" style="-fx-font-weight: bold; -fx-font-family: Helvetica Neue Regular;" styleClass="menu-spec-mac" text="TCD Editor FX" visible="true">
+                                <Menu id="mnuSpecMac" fx:id="mnuSpecMac" disable="false" mnemonicParsing="false"
+                                      style="-fx-font-weight: bold; -fx-font-family: Helvetica Neue Regular;"
+                                      styleClass="menu-spec-mac" text="TCD Editor FX" visible="true">
                                     <items>
-                                        <MenuItem id="mnuAbout" fx:id="mnuAbout" mnemonicParsing="false" onAction="#infoAbout" style="-fx-font-weight: normal;" text="About ...">
+                                        <MenuItem id="mnuAbout" fx:id="mnuAbout" mnemonicParsing="false"
+                                                  onAction="#infoAbout" style="-fx-font-weight: normal;"
+                                                  text="About ...">
                                         </MenuItem>
-                                        <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem id="mnuPreferences" fx:id="mnuPreferences" mnemonicParsing="false" onAction="#openPreferences" style="-fx-font-weight: normal;" text="Preferences ...">
+                                        <SeparatorMenuItem mnemonicParsing="false"/>
+                                        <MenuItem id="mnuPreferences" fx:id="mnuPreferences" mnemonicParsing="false"
+                                                  onAction="#openPreferences" style="-fx-font-weight: normal;"
+                                                  text="Preferences ...">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="COMMA" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="COMMA" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem id="mnuQuitMac" fx:id="mnuQuitMac" mnemonicParsing="false" onAction="#quitApplication" style="-fx-font-weight: normal;" text="Quit TCD editor">
+                                        <SeparatorMenuItem mnemonicParsing="false"/>
+                                        <MenuItem id="mnuQuitMac" fx:id="mnuQuitMac" mnemonicParsing="false"
+                                                  onAction="#quitApplication" style="-fx-font-weight: normal;"
+                                                  text="Quit TCD editor">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="Q" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="Q" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-            
+
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="File">
                                     <items>
-                                        <MenuItem id="mnuNewProject" fx:id="mnuNewProject" mnemonicParsing="false" onAction="#newGuiProject" text="New GUI Project ...">
+                                        <MenuItem id="mnuNewProject" fx:id="mnuNewProject" mnemonicParsing="false"
+                                                  onAction="#newGuiProject" text="New GUI Project ...">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="N" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="N" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <MenuItem id="mnuOpenProject" fx:id="mnuOpenProject" mnemonicParsing="false" onAction="#openGuiProject" text="Open GUI Project ...">
+                                        <MenuItem id="mnuOpenProject" fx:id="mnuOpenProject" mnemonicParsing="false"
+                                                  onAction="#openGuiProject" text="Open GUI Project ...">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="O" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="O" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <MenuItem id="mnuSaveProject" fx:id="mnuSaveProject" mnemonicParsing="false" onAction="#saveGuiProject" text="Save GUI Project">
+                                        <MenuItem id="mnuSaveProject" fx:id="mnuSaveProject" mnemonicParsing="false"
+                                                  onAction="#saveGuiProject" text="Save GUI Project">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="S" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="S" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <MenuItem id="mnuSaveAsProject" fx:id="mnuSaveAsProject" mnemonicParsing="false" onAction="#saveAsGuiProject" text="Save GUI Project as ...">
+                                        <MenuItem id="mnuSaveAsProject" fx:id="mnuSaveAsProject" mnemonicParsing="false"
+                                                  onAction="#saveAsGuiProject" text="Save GUI Project as ...">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="S" control="UP" meta="DOWN" shift="DOWN" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="S" control="UP" meta="DOWN"
+                                                                    shift="DOWN" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem id="mnuCloseProject" fx:id="mnuCloseProject" mnemonicParsing="false" onAction="#closeGuiProject" text="Close GUI Project">
+                                        <SeparatorMenuItem mnemonicParsing="false"/>
+                                        <MenuItem id="mnuCloseProject" fx:id="mnuCloseProject" mnemonicParsing="false"
+                                                  onAction="#closeGuiProject" text="Close GUI Project">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="W" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="W" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <SeparatorMenuItem id="mnuFileSepWin" fx:id="mnuFileSepWin" mnemonicParsing="false" />
-                                        <MenuItem id="mnuFileQuitWin" fx:id="mnuFileQuitWin" mnemonicParsing="false" onAction="#quitApplication" text="Quit TCD editor">
+                                        <SeparatorMenuItem id="mnuFileSepWin" fx:id="mnuFileSepWin"
+                                                           mnemonicParsing="false"/>
+                                        <MenuItem id="mnuFileQuitWin" fx:id="mnuFileQuitWin" mnemonicParsing="false"
+                                                  onAction="#quitApplication" text="Quit TCD editor">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="Edit">
                                     <items>
-                                        <MenuItem id="mnuUndo" fx:id="mnuUndo" mnemonicParsing="false" onAction="#performUndo" text="Undo last step">
+                                        <MenuItem id="mnuUndo" fx:id="mnuUndo" mnemonicParsing="false"
+                                                  onAction="#performUndo" text="Undo last step">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="Z" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="Z" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <MenuItem id="mnuRedo" fx:id="mnuRedo" mnemonicParsing="false" onAction="#performRedo" text="Redo last step">
+                                        <MenuItem id="mnuRedo" fx:id="mnuRedo" mnemonicParsing="false"
+                                                  onAction="#performRedo" text="Redo last step">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="Z" control="UP" meta="DOWN" shift="DOWN" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="Z" control="UP" meta="DOWN"
+                                                                    shift="DOWN" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <SeparatorMenuItem id="mnuFileSepWinEdit" fx:id="mnuFileSepWinEdit" mnemonicParsing="false" />
-                                        <MenuItem id="mnuCut" fx:id="mnuCut" mnemonicParsing="false" onAction="#cutSelection" text="Cut">
+                                        <SeparatorMenuItem id="mnuFileSepWinEdit" fx:id="mnuFileSepWinEdit"
+                                                           mnemonicParsing="false"/>
+                                        <MenuItem id="mnuCut" fx:id="mnuCut" mnemonicParsing="false"
+                                                  onAction="#cutSelection" text="Cut">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="X" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="X" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <MenuItem id="mnuCopy" fx:id="mnuCopy" mnemonicParsing="false" onAction="#copySelection" text="Copy">
+                                        <MenuItem id="mnuCopy" fx:id="mnuCopy" mnemonicParsing="false"
+                                                  onAction="#copySelection" text="Copy">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="C" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="C" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <MenuItem id="mnuPaste" fx:id="mnuPaste" mnemonicParsing="false" onAction="#pasteSelection" text="Paste">
+                                        <MenuItem id="mnuPaste" fx:id="mnuPaste" mnemonicParsing="false"
+                                                  onAction="#pasteSelection" text="Paste">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="V" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="V" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="View">
                                     <items>
-                                        <MenuItem id="mnuZoomIn" fx:id="mnuZoomIn" mnemonicParsing="false" onAction="#performZoomIn" text="Zoom in">
+                                        <MenuItem id="mnuZoomIn" fx:id="mnuZoomIn" mnemonicParsing="false"
+                                                  onAction="#performZoomIn" text="Zoom in">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="PLUS" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="PLUS" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
-                                        <MenuItem id="mnuZoomOut" fx:id="mnuZoomOut" mnemonicParsing="false" onAction="#performZoomOut" text="Zoom out">
+                                        <MenuItem id="mnuZoomOut" fx:id="mnuZoomOut" mnemonicParsing="false"
+                                                  onAction="#performZoomOut" text="Zoom out">
                                             <accelerator>
-                                                <KeyCodeCombination alt="UP" code="MINUS" control="UP" meta="DOWN" shift="UP" shortcut="UP" />
+                                                <KeyCodeCombination alt="UP" code="MINUS" control="UP" meta="DOWN"
+                                                                    shift="UP" shortcut="UP"/>
                                             </accelerator>
                                         </MenuItem>
                                     </items>
                                 </Menu>
                                 <Menu mnemonicParsing="false" text="Help">
                                     <items>
-                                        <MenuItem mnemonicParsing="false" text="Help contents ..." />
+                                        <MenuItem mnemonicParsing="false" text="Help contents ..."/>
                                     </items>
                                 </Menu>
                             </menus>
                         </MenuBar>
                         <ToolBar>
                             <items>
-                                <Button fx:id="tbbQuit" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#quitApplication" text="Quit">
+                                <Button fx:id="tbbQuit" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#quitApplication" text="Quit">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/gemicon/PNG/32x32/row_1/8.png" />
+                                                <Image url="@../../resources/gemicon/PNG/32x32/row_1/8.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Separator orientation="VERTICAL" />
-                                <Button fx:id="tbbOpen" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#openGuiProject" text="Open a GUI project">
+                                <Separator orientation="VERTICAL"/>
+                                <Button fx:id="tbbOpen" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#openGuiProject" text="Open a GUI project">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/gemicon/PNG/32x32/row_11/3.png" />
+                                                <Image url="@../../resources/gemicon/PNG/32x32/row_11/3.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button fx:id="tbbSave" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#saveGuiProject" text="Save current GUI project">
+                                <Button fx:id="tbbSave" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#saveGuiProject" text="Save current GUI project">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/gemicon/PNG/32x32/row_10/7.png" />
+                                                <Image url="@../../resources/gemicon/PNG/32x32/row_10/7.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Separator orientation="VERTICAL" />
-                                <Button fx:id="tbbUndo" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#performUndo" text="Undo last step">
+                                <Separator orientation="VERTICAL"/>
+                                <Button fx:id="tbbUndo" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#performUndo" text="Undo last step">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/img/Command-Undo.png" />
+                                                <Image url="@../../resources/img/Command-Undo.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button fx:id="tbbRedo" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#performRedo" text="Redo last undo step">
+                                <Button fx:id="tbbRedo" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#performRedo" text="Redo last undo step">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/img/Command-Redo.png" />
+                                                <Image url="@../../resources/img/Command-Redo.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Separator orientation="VERTICAL" />
-                                <Button fx:id="tbbZoomIn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#performZoomIn" text="Zoom in">
+                                <Separator orientation="VERTICAL"/>
+                                <Button fx:id="tbbZoomIn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#performZoomIn" text="Zoom in">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/img/Document-Zoom-In.png" />
+                                                <Image url="@../../resources/img/Document-Zoom-In.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button fx:id="tbbZoomOut" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#performZoomOut" text="Zoom out">
+                                <Button fx:id="tbbZoomOut" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#performZoomOut" text="Zoom out">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/img/Document-Zoom-Out.png" />
+                                                <Image url="@../../resources/img/Document-Zoom-Out.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Separator orientation="VERTICAL" />
-                                <Button fx:id="tbbDelete" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#performDelete" text="Delete selected">
+                                <Separator orientation="VERTICAL"/>
+                                <Button fx:id="tbbDelete" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#performDelete" text="Delete selected">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/gemicon/PNG/32x32/row_2/1.png" />
+                                                <Image url="@../../resources/gemicon/PNG/32x32/row_2/1.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Separator orientation="VERTICAL" />
-                                <Button fx:id="tbbPreferences" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#openPreferences" text="Preferences">
+                                <Separator orientation="VERTICAL"/>
+                                <Button fx:id="tbbPreferences" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#openPreferences" text="Preferences">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/gemicon/PNG/32x32/row_3/13.png" />
+                                                <Image url="@../../resources/gemicon/PNG/32x32/row_3/13.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Separator orientation="VERTICAL" />
-                                <Button fx:id="tbbUpload" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#performUpload" text="Upload to display controller">
+                                <Separator orientation="VERTICAL"/>
+                                <Button fx:id="tbbUpload" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#performUpload" text="Upload to display controller">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/gemicon/PNG/32x32/row_3/9.png" />
+                                                <Image url="@../../resources/gemicon/PNG/32x32/row_3/9.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button fx:id="tbbDownload" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#performDownload" text="Download from display controller">
+                                <Button fx:id="tbbDownload" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false"
+                                        onAction="#performDownload" text="Download from display controller">
                                     <graphic>
-                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true"
+                                                   preserveRatio="true">
                                             <image>
-                                                <Image url="@../../resources/gemicon/PNG/32x32/row_3/8.png" />
+                                                <Image url="@../../resources/gemicon/PNG/32x32/row_3/8.png"/>
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -248,123 +306,159 @@
                                             <children>
                                                 <GridPane fx:id="itemGrid">
                                                     <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="48.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="48.0" />
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="48.0" />
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="48.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="48.0"/>
+                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="48.0"/>
                                                     </columnConstraints>
                                                     <rowConstraints>
-                                                        <RowConstraints minHeight="48.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="48.0" vgrow="SOMETIMES" />
-                                                        <RowConstraints minHeight="48.0" vgrow="SOMETIMES" />
+                                                        <RowConstraints minHeight="48.0" vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="48.0" vgrow="SOMETIMES"/>
+                                                        <RowConstraints minHeight="48.0" vgrow="SOMETIMES"/>
                                                     </rowConstraints>
                                                     <children>
-                                                        <Button fx:id="itemButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Editor.Model.Items.TcdButton" textAlignment="CENTER" textFill="TRANSPARENT">
+                                                        <Button fx:id="itemButton" contentDisplay="GRAPHIC_ONLY"
+                                                                mnemonicParsing="false"
+                                                                text="Editor.Model.Items.TcdButton"
+                                                                textAlignment="CENTER" textFill="TRANSPARENT">
                                                             <graphic>
-                                                                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView fitHeight="48.0" fitWidth="48.0"
+                                                                           pickOnBounds="true" preserveRatio="true">
                                                                     <image>
-                                                                        <Image url="@../../resources/actions/widget-gtk-button.png" />
+                                                                        <Image url="@../../resources/actions/widget-gtk-button.png"/>
                                                                     </image>
                                                                     <cursor>
-                                                                        <Cursor fx:constant="HAND" />
+                                                                        <Cursor fx:constant="HAND"/>
                                                                     </cursor>
                                                                 </ImageView>
                                                             </graphic>
                                                             <cursor>
-                                                                <Cursor fx:constant="OPEN_HAND" />
+                                                                <Cursor fx:constant="OPEN_HAND"/>
                                                             </cursor>
                                                         </Button>
-                                                        <Button fx:id="itemSwitch" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Editor.Model.Items.TcdSwitch" textAlignment="CENTER" GridPane.columnIndex="1">
+                                                        <Button fx:id="itemSwitch" contentDisplay="GRAPHIC_ONLY"
+                                                                mnemonicParsing="false"
+                                                                text="Editor.Model.Items.TcdSwitch"
+                                                                textAlignment="CENTER" GridPane.columnIndex="1">
                                                             <graphic>
-                                                                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true" style="-fx-skin: TcdSwitchSkin;">
+                                                                <ImageView fitHeight="48.0" fitWidth="48.0"
+                                                                           pickOnBounds="true" preserveRatio="true"
+                                                                           style="-fx-skin: TcdSwitchSkin;">
                                                                     <image>
-                                                                        <Image url="@../../resources/actions/widget-gtk-switch.png" />
+                                                                        <Image url="@../../resources/actions/widget-gtk-switch.png"/>
                                                                     </image>
                                                                 </ImageView>
                                                             </graphic>
                                                             <cursor>
-                                                                <Cursor fx:constant="OPEN_HAND" />
+                                                                <Cursor fx:constant="OPEN_HAND"/>
                                                             </cursor>
                                                         </Button>
-                                                        <Button fx:id="itemSlider" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Slider" textAlignment="CENTER" GridPane.rowIndex="1">
+                                                        <Button fx:id="itemSlider" contentDisplay="GRAPHIC_ONLY"
+                                                                mnemonicParsing="false" text="Slider"
+                                                                textAlignment="CENTER" GridPane.rowIndex="1">
                                                             <cursor>
-                                                                <Cursor fx:constant="OPEN_HAND" />
+                                                                <Cursor fx:constant="OPEN_HAND"/>
                                                             </cursor>
                                                             <graphic>
-                                                                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView fitHeight="48.0" fitWidth="48.0"
+                                                                           pickOnBounds="true" preserveRatio="true">
                                                                     <image>
-                                                                        <Image url="@../../resources/actions/widget-gtk-hscale.png" />
+                                                                        <Image url="@../../resources/actions/widget-gtk-hscale.png"/>
                                                                     </image>
                                                                 </ImageView>
                                                             </graphic>
                                                         </Button>
-                                                        <Button fx:id="itemGauge" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Gauge" textAlignment="CENTER" GridPane.columnIndex="2">
+                                                        <Button fx:id="itemGauge" contentDisplay="GRAPHIC_ONLY"
+                                                                mnemonicParsing="false" text="Gauge"
+                                                                textAlignment="CENTER" GridPane.columnIndex="2">
                                                             <graphic>
-                                                                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView fitHeight="48.0" fitWidth="48.0"
+                                                                           pickOnBounds="true" preserveRatio="true">
                                                                     <image>
-                                                                        <Image url="@../../resources/actions/widget-gtk-progressbar.png" />
+                                                                        <Image url="@../../resources/actions/widget-gtk-progressbar.png"/>
                                                                     </image>
                                                                 </ImageView>
                                                             </graphic>
                                                             <cursor>
-                                                                <Cursor fx:constant="OPEN_HAND" />
+                                                                <Cursor fx:constant="OPEN_HAND"/>
                                                             </cursor>
                                                         </Button>
-                                                        <Button fx:id="itemKnob" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Editor.Model.Items.TcdFader" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                        <Button fx:id="itemKnob" contentDisplay="GRAPHIC_ONLY"
+                                                                mnemonicParsing="false"
+                                                                text="Editor.Model.Items.TcdFader"
+                                                                textAlignment="CENTER" GridPane.columnIndex="1"
+                                                                GridPane.rowIndex="1">
                                                             <graphic>
-                                                                <ImageView id="Editor.Model.Items.TcdFader" fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView id="Editor.Model.Items.TcdFader"
+                                                                           fitHeight="48.0" fitWidth="48.0"
+                                                                           pickOnBounds="true" preserveRatio="true">
                                                                     <image>
-                                                                        <Image url="@../../resources/actions/widget-gtk-knob.png" />
+                                                                        <Image url="@../../resources/actions/widget-gtk-knob.png"/>
                                                                     </image>
                                                                 </ImageView>
                                                             </graphic>
                                                             <cursor>
-                                                                <Cursor fx:constant="OPEN_HAND" />
+                                                                <Cursor fx:constant="OPEN_HAND"/>
                                                             </cursor>
                                                         </Button>
-                                                        <Button fx:id="itemRadioButton" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Radiobutton" textAlignment="CENTER" GridPane.rowIndex="2">
+                                                        <Button fx:id="itemRadioButton" contentDisplay="GRAPHIC_ONLY"
+                                                                mnemonicParsing="false" text="Radiobutton"
+                                                                textAlignment="CENTER" GridPane.rowIndex="2">
                                                             <cursor>
-                                                                <Cursor fx:constant="OPEN_HAND" />
+                                                                <Cursor fx:constant="OPEN_HAND"/>
                                                             </cursor>
                                                             <graphic>
-                                                                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView fitHeight="48.0" fitWidth="48.0"
+                                                                           pickOnBounds="true" preserveRatio="true">
                                                                     <image>
-                                                                        <Image url="@../../resources/actions/widget-gtk-radiobutton.png" />
+                                                                        <Image url="@../../resources/actions/widget-gtk-radiobutton.png"/>
                                                                     </image>
                                                                 </ImageView>
                                                             </graphic>
                                                         </Button>
-                                                        <Button fx:id="itemCheckBox" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Checkbox" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                        <Button fx:id="itemCheckBox" contentDisplay="GRAPHIC_ONLY"
+                                                                mnemonicParsing="false" text="Checkbox"
+                                                                textAlignment="CENTER" GridPane.columnIndex="1"
+                                                                GridPane.rowIndex="2">
                                                             <cursor>
-                                                                <Cursor fx:constant="OPEN_HAND" />
+                                                                <Cursor fx:constant="OPEN_HAND"/>
                                                             </cursor>
                                                             <graphic>
-                                                                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView fitHeight="48.0" fitWidth="48.0"
+                                                                           pickOnBounds="true" preserveRatio="true">
                                                                     <image>
-                                                                        <Image url="@../../resources/actions/widget-gtk-checkbutton.png" />
+                                                                        <Image url="@../../resources/actions/widget-gtk-checkbutton.png"/>
                                                                     </image>
                                                                 </ImageView>
                                                             </graphic>
                                                         </Button>
-                                                        <Button fx:id="itemLabel" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Label" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                                        <Button fx:id="itemLabel" contentDisplay="GRAPHIC_ONLY"
+                                                                mnemonicParsing="false" text="Label"
+                                                                textAlignment="CENTER" GridPane.columnIndex="2"
+                                                                GridPane.rowIndex="2">
                                                             <cursor>
-                                                                <Cursor fx:constant="OPEN_HAND" />
+                                                                <Cursor fx:constant="OPEN_HAND"/>
                                                             </cursor>
                                                             <graphic>
-                                                                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView fitHeight="48.0" fitWidth="48.0"
+                                                                           pickOnBounds="true" preserveRatio="true">
                                                                     <image>
-                                                                        <Image url="@../../resources/actions/widget-gtk-infobar.png" />
+                                                                        <Image url="@../../resources/actions/widget-gtk-infobar.png"/>
                                                                     </image>
                                                                 </ImageView>
                                                             </graphic>
                                                         </Button>
-                                                        <Button fx:id="itemImage" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" text="Image" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                        <Button fx:id="itemImage" contentDisplay="GRAPHIC_ONLY"
+                                                                mnemonicParsing="false" text="Image"
+                                                                textAlignment="CENTER" GridPane.columnIndex="2"
+                                                                GridPane.rowIndex="1">
                                                             <cursor>
-                                                                <Cursor fx:constant="OPEN_HAND" />
+                                                                <Cursor fx:constant="OPEN_HAND"/>
                                                             </cursor>
                                                             <graphic>
-                                                                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                                                                <ImageView fitHeight="48.0" fitWidth="48.0"
+                                                                           pickOnBounds="true" preserveRatio="true">
                                                                     <image>
-                                                                        <Image url="@../../resources/actions/widget-gtk-image.png" />
+                                                                        <Image url="@../../resources/actions/widget-gtk-image.png"/>
                                                                     </image>
                                                                 </ImageView>
                                                             </graphic>
@@ -376,17 +470,34 @@
                                     </content>
                                 </TitledPane>
                                 <TitledPane text="Properties">
-                           <content>
-                              <BorderPane prefHeight="200.0" prefWidth="200.0">
-                                 <center>
-                                    <VBox fx:id="propVBox" BorderPane.alignment="CENTER" />
-                                 </center>
-                              </BorderPane>
-                           </content>
+                                    <content>
+                                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                            <center>
+                                                <VBox fx:id="propVBox" BorderPane.alignment="CENTER">
+                                                    <children>
+                                                        <TableView fx:id="tvProperties" prefHeight="200.0"
+                                                                   prefWidth="200.0">
+                                                            <columns>
+                                                                <TableColumn fx:id="tvPropColName" prefWidth="110.0"
+                                                                             text="Name"/>
+                                                                <TableColumn fx:id="tvPropColValue" prefWidth="90.0"
+                                                                             text="Value"/>
+                                                                <TableColumn fx:id="tvPropColId" prefWidth="20.0"
+                                                                             visible="false" text="ID"/>
+                                                                <TableColumn fx:id="tvPropColType" prefWidth="20.0"
+                                                                             visible="false" text="Type"/>
+                                                            </columns>
+                                                        </TableView>
+                                                    </children>
+                                                </VBox>
+                                            </center>
+                                        </BorderPane>
+                                    </content>
                                 </TitledPane>
                                 <TitledPane expanded="false" text="Code">
                                     <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                                                    prefWidth="200.0"/>
                                     </content>
                                 </TitledPane>
                             </children>
@@ -395,13 +506,15 @@
                 </HBox>
             </left>
             <center>
-                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                            prefHeight="400.0" prefWidth="640.0" BorderPane.alignment="CENTER">
                     <children>
-                          <Rectangle fx:id="panelShader" fill="#ae2828" smooth="false" />
-                        <Pane fx:id="basePane" prefHeight="400.0" prefWidth="640.0" style="-fx-background-color: #eee7ce; -fx-border-color: #ca7302; -fx-border-width: 2px;" />
+                        <Rectangle fx:id="panelShader" fill="#ae2828" smooth="false"/>
+                        <Pane fx:id="basePane" prefHeight="400.0" prefWidth="640.0"
+                              style="-fx-background-color: #eee7ce; -fx-border-color: #ca7302; -fx-border-width: 2px;"/>
                     </children>
                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </padding>
                 </AnchorPane>
             </center>

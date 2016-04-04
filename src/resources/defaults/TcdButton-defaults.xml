@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<properties>
-    <prop_colors>#8b7c71</prop_colors>
-    <prop_colors>#FFFFFF</prop_colors>
-    <prop_images>resources/img/button-on.png</prop_images>
-    <prop_images>resources/img/button-off.png</prop_images>
-    <prop_sizes>150.0</prop_sizes>
-    <prop_sizes>40.0</prop_sizes>
-    <prop_sizes>20.0</prop_sizes>
-    <prop_texts>A button!</prop_texts>
-</properties>
+<ns2:properties xmlns:ns2="https://mueller-spaeth.com/">
+    <property>
+        <category>images</category>
+        <description>is a property</description>
+        <index>0</index>
+        <name>IconOn</name>
+        <type>filename</type>
+        <value>resources/img/button-on.png</value>
+    </property>
+    <property>
+        <category>images</category>
+        <description>is a property</description>
+        <index>1</index>
+        <name>IconOff</name>
+        <type>filename</type>
+        <value>resources/img/button-off.png</value>
+    </property>
+    <property>
+        <category>colors</category>
+        <description>is a property</description>
+        <index>0</index>
+        <name>TextColorOn</name>
+        <type>number</type>
+        <value>#8b7c71</value>
+    </property>
+    <property>
+        <category>colors</category>
+        <description>is a property</description>
+        <index>1</index>
+        <name>TextColorOff</name>
+        <type>number</type>
+        <value>#FFFFFF</value>
+    </property>
+    <property>
+        <category>texts</category>
+        <description>is a property</description>
+        <index>0</index>
+        <name>Label</name>
+        <type>text</type>
+        <value>A button!</value>
+    </property>
+    <property>
+        <category>sizes</category>
+        <description>is a property</description>
+        <index>0</index>
+        <name>ItemWidth</name>
+        <type>measure</type>
+        <value>150.0</value>
+    </property>
+    <property>
+        <category>sizes</category>
+        <description>is a property</description>
+        <index>1</index>
+        <name>ItemHeight</name>
+        <type>measure</type>
+        <value>40.0</value>
+    </property>
+    <property>
+        <category>sizes</category>
+        <description>is a property</description>
+        <index>2</index>
+        <name>TextSize</name>
+        <type>measure</type>
+        <value>20.0</value>
+    </property>
+</ns2:properties>

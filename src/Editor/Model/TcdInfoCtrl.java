@@ -4,7 +4,6 @@ import Editor.View.Skin.IControlSkin;
 import Editor.Controller.ItemSelection;
 import Editor.Utils;
 import Editor.View.Skin.TcdControlSkin;
-import Editor.View.Skin.TcdSkinEnums;
 import com.sun.javafx.iio.ImageStorage;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Rectangle2D;
@@ -58,6 +57,7 @@ public class TcdInfoCtrl {
         }
     }
 
+/*
     public String[] getTexts() {
         return ((IControlSkin) ctrl.getSkin()).getTexts();
     }
@@ -119,7 +119,7 @@ public class TcdInfoCtrl {
         }
         this.images = value;
     }
-
+*/
     @XmlElement(name = "ctrl_classname")
     public String getCtrlClassname() {
         return ctrl.getClass().getName();
@@ -178,7 +178,7 @@ public class TcdInfoCtrl {
         TcdControl newItem = (TcdControl) SelectCtrl.generateNewItem(this.ctrlClassname, root, true);
         newItem.setValue(this.value);
         newItem.setBounds(this.ctrlBounds);
-        ((IControlSkin) newItem.getSkin()).setImages(this.images);
-        ((IControlSkin) newItem.getSkin()).setTexts(this.texts);
+        //((IControlSkin) newItem.getSkin()).setImages(this.images);
+        //((IControlSkin) newItem.getSkin()).setTexts(this.texts);
     }
 }

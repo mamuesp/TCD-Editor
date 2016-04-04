@@ -24,7 +24,6 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
-import org.controlsfx.control.PropertySheet;
 
 import java.io.File;
 import java.net.URL;
@@ -57,6 +56,8 @@ public class Controller implements Initializable {
     public AnchorPane propEditor;
     @FXML
     public VBox propVBox;
+    @FXML
+    public TableView tvProperties;
 
     @FXML
     private void openGuiProject(ActionEvent event) {
@@ -199,12 +200,9 @@ public class Controller implements Initializable {
             public void onChanged(ListChangeListener.Change change) {
                 final ObservableList selectedNodes = change.getList();
                 if (selectedNodes.size() == 1) {
-                    propVBox.getChildren().clear();
+                    tvProperties.getColumns().clear();
                     TcdControl ctrl = (TcdControl) selectedNodes.get(0);
-                    PropertySheet ps = new PropertySheet();
-                    PropertySheet propertySheet = new PropertySheet(((IControlSkin) ctrl.getSkin()).getProperties().getItems("all"));
-                    propVBox.setVgrow(propertySheet, Priority.ALWAYS);
-                    propVBox.getChildren().add(ps);
+                    ((IControlSkin) ctrl.getSkin()).getProps().getItems();
                 }
             }
         });

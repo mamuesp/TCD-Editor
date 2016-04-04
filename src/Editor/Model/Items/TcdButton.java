@@ -21,7 +21,6 @@ public class TcdButton extends TcdControl {
 
     public TcdButton(Pane parent, String id) {
         super(parent, id);
-        this.setPrefSize(150, 40);
         type = TcdItemType.BUTTON;
         TcdButtonSkin mySkin = new TcdButtonSkin(this);
         setSkin(mySkin);

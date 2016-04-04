@@ -21,7 +21,6 @@ public class TcdSwitch extends TcdControl {
 
     public TcdSwitch(Pane parent, String id) {
         super(parent, id);
-        setPrefSize(100, 80);
         type = TcdItemType.SWITCH;
         TcdSwitchSkin mySkin = new TcdSwitchSkin(this);
         setSkin(mySkin);

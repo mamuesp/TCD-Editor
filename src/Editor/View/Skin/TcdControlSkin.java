@@ -2,7 +2,10 @@ package Editor.View.Skin;
 
 import Editor.Model.TcdControl;
 import Editor.View.Skin.IControlSkin;
-import Editor.View.Skin.TcdSkinEnums;
+import Editor.View.Skin.TcdProperties;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.SkinBase;
@@ -12,10 +15,11 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Optional;
 
-public class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin, java.io.Serializable {
+public abstract class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin {
 
-    protected TcdPropertiesBean props = null;
+    protected TcdProperties props = null;
     protected TcdControl control = null;
 
     protected BorderPane tcdSkinBase = new BorderPane();
@@ -23,31 +27,26 @@ public class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin
 
     public TcdControlSkin(final TcdControl control) {
         super(control);
-        this.props = new TcdPropertiesBean(this);
+        this.props = new TcdProperties(this);
         this.control = control;
-        initDefaults();
         initializeGraphics();
     }
 
-    public void initDefaults() {
-        // do nothing
-    };
-
-    public void loadDefaults(TcdPropertiesBean tcdPropertiesBean) {
-        // do nothingTcdPropertiesBean props
-    };
+    public abstract ArrayList<TcdPropertyItem> loadDefaults(TcdProperties props);
 
     public void initializeGraphics() {
 
         // draw Button area
-        //control = (TcdControl) getSkinnable();
-        getChildren().clear();
-        getChildren().add(tcdSkinBase);
 
-        double w = Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.ITEMWIDTH.ordinal()));
-        double h = Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.ITEMHEIGHT.ordinal()));
+        if (props != null) {
+            getChildren().clear();
+            getChildren().add(tcdSkinBase);
 
-        control.setPrefSize(w, h);
+            double w = Double.parseDouble(props.getValue("sizes", "ItemWidth"));
+            double h = Double.parseDouble(props.getValue("sizes", "ItemHeight"));
+
+            control.setPrefSize(w, h);
+        }
     }
 
     public void addDecoration() {
@@ -103,51 +102,8 @@ public class TcdControlSkin extends SkinBase<TcdControl> implements IControlSkin
         control.getChildren().removeAll(removable);
     }
 
-    @Override
-    public TcdPropertiesBean getProperties() {
-        return props;
+    public TcdProperties getProps() {
+        return this.props;
     }
-
-
-    @Override
-    public String[] getColors() {
-        return this.props.getColors();
-    }
-
-    @Override
-    public void setColors(String[] value) {
-        this.props.setColors(value);
-    }
-
-    @Override
-    public String[] getImages() {
-        return this.props.getImages();
-    }
-
-    @Override
-    public void setImages(String[] value) {
-        this.props.setImages(value);
-    }
-
-    @Override
-    public String[] getTexts() {
-        return this.props.getTexts();
-    }
-
-    @Override
-    public void setTexts(String[] value) {
-        this.props.setTexts(value);
-    }
-
-    @Override
-    public String[] getSizes() {
-        return this.props.getSizes();
-    }
-
-    @Override
-    public void setSizes(String[] value) {
-        this.props.setSizes(value);
-    }
-
 }
 

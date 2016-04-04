@@ -1,10 +1,8 @@
 package Editor.View.Skin.Items;
 
 import Editor.Model.Items.TcdSwitch;
-import Editor.View.Skin.IControlSkin;
-import Editor.View.Skin.TcdControlSkin;
-import Editor.View.Skin.TcdSkinEnums;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import Editor.View.Skin.*;
+import Editor.View.Skin.TcdPropertyItem;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
@@ -22,81 +20,65 @@ public class TcdSwitchSkin extends TcdControlSkin implements IControlSkin {
         super(control);
     }
 
-    public void initDefaults() {
-        ArrayList<String> tmpList = new ArrayList<String>();
-        this.props = (this.props == null) ? props : this.props;
+    @Override
+    public ArrayList<TcdPropertyItem> loadDefaults(TcdProperties props) {
+        props.add("images", "IconOn", "resources/img/switch-on.png", "0", "is a property", "filename");
+        props.add("images", "IconOff", "resources/img/switch-off.png", "1", "is a property", "filename");
 
-        tmpList.add(TcdSkinEnums.Images.ICONON.ordinal(), "resources/img/switch-on.png");
-        tmpList.add(TcdSkinEnums.Images.ICONOFF.ordinal(), "resources/img/switch-off.png");
-        props.setImages(tmpList.toArray(new String[tmpList.size()]));
-        tmpList.clear();
+        props.add("colors", "TextColorOn", "#8b7c71", "0", "is a property", "number");
+        props.add("colors", "TextColorOff", "#8b7c71", "1", "is a property", "number");
 
-        tmpList.add(TcdSkinEnums.Colors.TEXTCOLORON.ordinal(), "#8b7c71");
-        tmpList.add(TcdSkinEnums.Colors.TEXTCOLOROFF.ordinal(), "#8b7c71");
-        props.setColors(tmpList.toArray(new String[tmpList.size()]));
-        tmpList.clear();
+        props.add("texts", "Label", "A switch!", "0", "is a property", "text");
 
-        tmpList.add(TcdSkinEnums.Texts.LABEL.ordinal(), "A switch!");
-        props.setTexts(tmpList.toArray(new String[tmpList.size()]));
-        tmpList.clear();
+        props.add("sizes", "ItemWidth", "100.0", "0", "is a property", "measure");
+        props.add("sizes", "ItemHeight", "80.0", "1", "is a property", "measure");
+        props.add("sizes", "TextSize", "20,0", "2", "is a property", "measure");
 
-        tmpList.add(TcdSkinEnums.Sizes.ITEMWIDTH.ordinal(), "100.0");
-        tmpList.add(TcdSkinEnums.Sizes.ITEMHEIGHT.ordinal(), "80.0");
-        tmpList.add(TcdSkinEnums.Sizes.TEXTSIZE.ordinal(), "20.0");
-        props.setSizes(tmpList.toArray(new String[tmpList.size()]));
-        tmpList.clear();
-
-        super.initDefaults();
+        return props.getProperties();
     }
 
     public void initializeGraphics() {
 
         // draw switch area
+        super.initializeGraphics();
 
-        TcdSwitch control = (TcdSwitch) getSkinnable();
-        getChildren().clear();
-        getChildren().add(tcdSkinBase);
+        if (props != null) {
+            ImageView ivImg = null;
+            Font lblFont = new Font("Arial", Double.parseDouble(props.getValue("sizes", "TextSize")));
+            Color fontColor = Color.web(props.getValue("colors", ((control.getValue() != 0.0) ? "TextColorOn" : "TextColorOff")));
+            Rectangle2D vwRect;
+            try {
+                String imgFile = props.getValue("images", ((control.getValue() != 0.0) ? "InconOn" : "IconOff"));
+                Image img = new Image(this.getClass().getClassLoader().getResourceAsStream(imgFile));
+                ivImg = new ImageView(img);
 
-        double w = Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.ITEMWIDTH.ordinal()));
-        double h = Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.ITEMHEIGHT.ordinal()));
-        control.setPrefSize(w, h);
-
-        ImageView ivImg = null;
-        Font lblFont = new Font("Arial", Double.parseDouble(props.getSizes(TcdSkinEnums.Sizes.TEXTSIZE.ordinal())));
-        Color fontColor = Color.web(props.getColors((control.getValue() != 0.0) ? TcdSkinEnums.Colors.TEXTCOLORON.ordinal() : TcdSkinEnums.Colors.TEXTCOLOROFF.ordinal()));
-        Rectangle2D vwRect;
-        try {
-            String imgFile = props.getImages((control.getValue() != 0.0) ? TcdSkinEnums.Images.ICONON.ordinal() : TcdSkinEnums.Images.ICONOFF.ordinal());
-            Image img = new Image(this.getClass().getClassLoader().getResourceAsStream(imgFile));
-            ivImg = new ImageView(img);
-
-            ImageView[] ivColl = { ivImg };
-            for (ImageView ivCurr: ivColl) {
-                ivCurr.setPreserveRatio(true);
-                ivCurr.setSmooth(true);
-                ivCurr.setCache(true);
-                ivCurr.setPickOnBounds(false);
-                ivCurr.setMouseTransparent(true);
+                ImageView[] ivColl = { ivImg };
+                for (ImageView ivCurr: ivColl) {
+                    ivCurr.setPreserveRatio(true);
+                    ivCurr.setSmooth(true);
+                    ivCurr.setCache(true);
+                    ivCurr.setPickOnBounds(false);
+                    ivCurr.setMouseTransparent(true);
+                }
+            } catch (Exception ex) {
+                ivImg = null;
             }
-        } catch (Exception ex) {
-            ivImg = null;
+
+            Label label = new Label(props.getValue("texts", "Label"));
+            label.setGraphic(ivImg);
+            label.setMaxWidth(Double.POSITIVE_INFINITY);
+            label.setMaxHeight(Double.POSITIVE_INFINITY);
+            //label.setStyle("-fx-border-color: blue;");
+            label.setContentDisplay(ContentDisplay.TOP);
+            label.setPickOnBounds(false);
+            label.setFont(lblFont);
+            label.setTextFill(fontColor);
+            label.setTextAlignment(TextAlignment.CENTER);
+            label.setMouseTransparent(true);
+
+            tcdSkinBase.getChildren().clear();
+            tcdSkinBase.setCenter(label);
         }
-
-        Label label = new Label(props.getTexts(TcdSkinEnums.Texts.LABEL.ordinal()));
-        label.setGraphic(ivImg);
-        label.setMaxWidth(Double.POSITIVE_INFINITY);
-        label.setMaxHeight(Double.POSITIVE_INFINITY);
-        //label.setStyle("-fx-border-color: blue;");
-        label.setContentDisplay(ContentDisplay.TOP);
-        label.setPickOnBounds(false);
-        label.setFont(lblFont);
-        label.setTextFill(fontColor);
-        label.setTextAlignment(TextAlignment.CENTER);
-        label.setMouseTransparent(true);
-
-        tcdSkinBase.getChildren().clear();
-        tcdSkinBase.setCenter(label);
-
     }
 }
 
