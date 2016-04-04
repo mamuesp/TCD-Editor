@@ -48,7 +48,7 @@ public class TcdSwitchSkin extends TcdControlSkin implements IControlSkin {
             Color fontColor = Color.web(props.getValue("colors", ((control.getValue() != 0.0) ? "TextColorOn" : "TextColorOff")));
             Rectangle2D vwRect;
             try {
-                String imgFile = props.getValue("images", ((control.getValue() != 0.0) ? "InconOn" : "IconOff"));
+                String imgFile = props.getValue("images", ((control.getValue() != 0.0) ? "IconOn" : "IconOff"));
                 Image img = new Image(this.getClass().getClassLoader().getResourceAsStream(imgFile));
                 ivImg = new ImageView(img);
 
