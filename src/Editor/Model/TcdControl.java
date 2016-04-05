@@ -257,7 +257,9 @@ public abstract class TcdControl extends Control {
 
     public void restoreDeco() {
         if (this.deco != null) {
-            getChildren().add(this.deco);
+            if (!getChildren().contains(this.deco)) {
+                getChildren().add(this.deco);
+            }
             this.deco = null;
         }
     }

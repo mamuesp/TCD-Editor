@@ -56,4 +56,29 @@
         <type>measure</type>
         <value>20.0</value>
     </property>
+    <property>
+        <category>values</category>
+        <description>is a property</description>
+        <index>0</index>
+        <name>Min. value</name>
+        <type>value</type>
+        <value>0.0</value>
+    </property>
+    <property>
+        <category>values</category>
+        <description>is a property</description>
+        <index>1</index>
+        <name>Max. value</name>
+        <type>value</type>
+        <value>100.0</value>
+    </property>
+    <property>
+        <category>info</category>
+        <description>is a property</description>
+        <index>1</index>
+        <name>Function</name>
+        <type>text</type>
+        <value>This is a fader (knob) which shows a value of an certain range, which might be in/decreased with the mouse. Test with right mouse button.</value>
+    </property>
+
 </ns2:properties>

@@ -243,7 +243,7 @@
                     <children>
                         <FlowPane orientation="VERTICAL" prefHeight="683.0" prefWidth="250.0" prefWrapLength="250.0" rowValignment="TOP">
                             <children>
-                                <TitledPane prefHeight="260.0" prefWidth="250.0" text="Properties">
+                                <TitledPane prefHeight="320.0" prefWidth="250.0" text="Properties">
                                     <content>
                                         <BorderPane prefHeight="252.0" prefWidth="229.0">
                                             <center>
@@ -259,7 +259,7 @@
                               <Font size="11.0" />
                            </font>
                                 </TitledPane>
-                        <TitledPane prefHeight="260.0" prefWidth="250.0" text="Preferences">
+                        <TitledPane prefHeight="230.0" prefWidth="250.0" text="Preferences">
                            <content>
                               <BorderPane prefHeight="200.0" prefWidth="200.0">
                                  <center>
@@ -271,7 +271,7 @@
                               <Font size="11.0" />
                            </font>
                         </TitledPane>
-                                <TitledPane prefHeight="260.0" prefWidth="250.0" text="Code">
+                                <TitledPane prefHeight="230.0" prefWidth="250.0" text="Code">
                            <content>
                               <BorderPane prefHeight="200.0" prefWidth="200.0">
                                  <center>

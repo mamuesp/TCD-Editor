@@ -1,9 +1,12 @@
 package Editor.View.Skin;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import org.controlsfx.control.PropertySheet;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.Optional;
 
 @XmlRootElement(name = "item")
 public class TcdPropertyItem {

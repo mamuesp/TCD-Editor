@@ -5,9 +5,15 @@
 }
 
 .table-view .table-row-cell {
-    -fx-cell-size: 12pt;
+//    -fx-cell-size: 12pt;
 }
 
+
+.table-view .cell-image-addr {
+    -fx-text-fill: blue;
+    -fx-font-weight: bold;
+}
+/*
 .table-view .table-row-cell:even {
     -fx-background-color: #e3e3e3;
 }
@@ -15,6 +21,7 @@
 .col-category {
     -fx-text-fill: darkblue;
 }
+*/
 
 .col-name {
     -fx-font-weight: bold;
@@ -22,4 +29,10 @@
 
 .col-value {
     -fx-font-style: italic;
+}
+
+.table-view .cell-group-head {
+    -fx-background-color: midnightblue;
+    -fx-text-fill: whitesmoke;
+    -fx-font-weight: bold;
 }

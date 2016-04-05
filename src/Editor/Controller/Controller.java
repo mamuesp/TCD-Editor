@@ -6,13 +6,10 @@
 package Editor.Controller;
 
 import Editor.Controller.DataIO.DataIOController;
-import Editor.View.Skin.IControlSkin;
 import Editor.Model.TcdControl;
 import Editor.Utils;
-import Editor.View.Skin.TcdProperties;
-import Editor.View.Skin.TcdPropertyItem;
+import Editor.View.Skin.IControlSkin;
 import com.mykong.core.OSValidator;
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +21,10 @@ import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 

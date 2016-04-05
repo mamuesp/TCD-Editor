@@ -1,18 +1,22 @@
 package Editor.View.Skin;
 
 import Editor.Controller.DataIO.DataIOController;
-import Editor.Model.TcdControl;
 import Editor.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.text.*;
+import javafx.scene.control.Control;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Text;
 
 /**
  * Part of project: TCD-Editor
@@ -66,8 +70,28 @@ public class TcdProperties {
         // add some specific properties ...
 
         String id = this.skin.getSkinnable().getInnerID();
-        this.add("control", "Control ID", id, "0", "is a property", "info");
+        this.add("info", "Control ID", id, "0", "is a property", "system");
 
+        String currCat = "";
+        HashSet<String> categories = new HashSet<String>();
+        for (TcdPropertyItem item : this.properties) {
+            categories.add(item.getCategory());
+        }
+        for (String cat : categories) {
+            this.add(cat, "", WordUtils.capitalize(cat), "-1", "", "group");
+        }
+
+        // Sorting
+        Collections.sort(this.properties, new Comparator<TcdPropertyItem>() {
+            @Override
+            public int compare(TcdPropertyItem item1, TcdPropertyItem item2) {
+                long comp = item1.getCategory().compareTo(item2.getCategory());
+                if (comp == 0) {
+                    comp = Long.parseLong(item1.getIdx()) - Long.parseLong(item2.getIdx());
+                }
+                return (int) comp;
+            }
+        });
     }
 
     public void add(String category, String name, String value, String index, String description, String type) {
@@ -100,7 +124,7 @@ public class TcdProperties {
         return items;
     }
 
-    public TableView getEditor(TableView tableIn) {
+    public TableView<TcdPropertyItem> getEditor(TableView<TcdPropertyItem> tableIn) {
 
         TableView<TcdPropertyItem> table = (tableIn == null) ? new TableView<TcdPropertyItem>() : tableIn;
 
@@ -110,10 +134,64 @@ public class TcdProperties {
         table.getColumns().clear();
 
         String[] tags = {"Category", "Name", "Value", "IDX", "Description", "Type"};
-        List<String> show = Arrays.asList("Category", "Name", "Value");
+        List<String> show = Arrays.asList("Name", "Value");
 
         for (String currTag : tags) {
-            TableColumn newCol = new TableColumn(currTag);
+            TableColumn<TcdPropertyItem, String> newCol = new TableColumn<TcdPropertyItem, String>(currTag);
+            switch (currTag) {
+                case "Name":
+                    newCol.prefWidthProperty().bind(table.widthProperty().multiply(26.0/100.0));
+                    break;
+                case "Value":
+                    newCol.prefWidthProperty().bind(table.widthProperty().multiply(70.0/100.0));
+                    break;
+            }
+
+            newCol.setCellFactory(new Callback<TableColumn<TcdPropertyItem, String>, TableCell<TcdPropertyItem, String>>() {
+                @Override
+                public TableCell<TcdPropertyItem, String> call(TableColumn<TcdPropertyItem, String> param) {
+                    return new TableCell<TcdPropertyItem, String>() {
+                        @Override
+                        protected void updateItem(String celltext, boolean empty) {
+                            super.updateItem(celltext, empty);
+                            int currentIndex = indexProperty().getValue() < 0 ? 0 : indexProperty().getValue();
+                            this.getStyleClass().clear();
+                            if (!empty) {
+                                String type = param.getTableView().getItems().get(currentIndex).getType();
+                                if (type.equals("group")) {
+                                    this.getStyleClass().add("cell-group-head");
+                                } else {
+                                    String cat = param.getTableView().getItems().get(currentIndex).getCategory();
+                                    if (param.getText().toLowerCase().equals("value")) {
+                                        switch (cat) {
+                                            case "images":
+                                                this.getStyleClass().add("cell-image-addr");
+                                                break;
+                                            case "colors":
+                                                this.getStyleClass().add("cell-color-val");
+                                                this.setStyle("-fx-background-color: " + celltext + ";");
+                                                break;
+                                            default:
+                                        }
+                                        this.getStyleClass().add("cell-color-val");
+                                    }
+                                }
+
+                                Text text = new Text(celltext);
+                                //setGraphic(text);
+                                this.setWrapText(true);
+                                setPrefHeight(Control.USE_COMPUTED_SIZE);
+//                                setPrefHeight(text.getBoundsInLocal().getHeight());
+                                text.wrappingWidthProperty().bind(newCol.widthProperty());
+                                text.textProperty().bind(this.itemProperty());
+                                setGraphic(text);
+
+//                                setText(celltext);
+                            }
+                        }
+                    };
+                }
+            });
             newCol.setCellValueFactory(new PropertyValueFactory<>(currTag.toLowerCase()));
             newCol.getStyleClass().add("col-" + currTag.toLowerCase());
             newCol.setVisible(show.contains(currTag));

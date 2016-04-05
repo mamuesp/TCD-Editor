@@ -64,4 +64,12 @@
         <type>measure</type>
         <value>20.0</value>
     </property>
+    <property>
+        <category>info</category>
+        <description>is a property</description>
+        <index>1</index>
+        <name>Function</name>
+        <type>text</type>
+        <value>This is a toggle button (switch) which may show two states: "on" and "off", each display a specific image. Test with right mouse button. State stays until next click.</value>
+    </property>
 </ns2:properties>

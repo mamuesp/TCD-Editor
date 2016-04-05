@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="TCD_Editor.jar" size="7555272" download="eager" />
+    <jar href="TCD_Editor.jar" size="7564062" download="eager" />
   </resources>
   <jfx:javafx-desc  width="600" height="400" main-class="Editor.Main"  name="TCD-Editor" />
   <update check="background"/>
