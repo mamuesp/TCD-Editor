@@ -2,25 +2,25 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2016-04-06T01:02:31</date>
-  <millis>1459897351029</millis>
+  <date>2016-04-06T23:40:24</date>
+  <millis>1459978824347</millis>
   <sequence>0</sequence>
   <logger>MainLogger</logger>
   <level>INFO</level>
   <class>Editor.Main</class>
   <method>start</method>
-  <thread>16</thread>
+  <thread>17</thread>
   <message>Start application ...</message>
 </record>
 <record>
-  <date>2016-04-06T01:02:32</date>
-  <millis>1459897352343</millis>
+  <date>2016-04-06T23:40:25</date>
+  <millis>1459978825673</millis>
   <sequence>1</sequence>
   <logger>MainLogger</logger>
   <level>INFO</level>
   <class>Editor.Main</class>
   <method>start</method>
-  <thread>16</thread>
+  <thread>17</thread>
   <message>Application ready...</message>
 </record>
 </log>

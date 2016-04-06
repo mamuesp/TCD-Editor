@@ -4,11 +4,9 @@ import Editor.Controller.DataIO.DataIOController;
 import Editor.Utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.*;
-import javafx.scene.control.Control;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import org.apache.commons.lang3.text.WordUtils;
@@ -17,6 +15,7 @@ import java.io.File;
 import java.util.*;
 
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Text;
+import static sun.jvm.hotspot.oops.CellTypeState.value;
 
 /**
  * Part of project: TCD-Editor
@@ -129,6 +128,7 @@ public class TcdProperties {
         TableView<TcdPropertyItem> table = (tableIn == null) ? new TableView<TcdPropertyItem>() : tableIn;
 
         table.setEditable(true);
+        //table.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         final ObservableList<TcdPropertyItem> data = FXCollections.observableArrayList(getItems());
         table.setItems(data);
         table.getColumns().clear();
@@ -138,6 +138,7 @@ public class TcdProperties {
 
         for (String currTag : tags) {
             TableColumn<TcdPropertyItem, String> newCol = new TableColumn<TcdPropertyItem, String>(currTag);
+            newCol.setEditable(currTag.equalsIgnoreCase("value"));
             switch (currTag) {
                 case "Name":
                     newCol.prefWidthProperty().bind(table.widthProperty().multiply(26.0/100.0));
@@ -146,6 +147,9 @@ public class TcdProperties {
                     newCol.prefWidthProperty().bind(table.widthProperty().multiply(70.0/100.0));
                     break;
             }
+
+            //final TitleRowFactory<TcdPropertyItem> rowFactory = new TitleRowFactory<>("title-row");
+            //table.setRowFactory(rowFactory);
 
             newCol.setCellFactory(new Callback<TableColumn<TcdPropertyItem, String>, TableCell<TcdPropertyItem, String>>() {
                 @Override
@@ -158,35 +162,35 @@ public class TcdProperties {
                             this.getStyleClass().clear();
                             if (!empty) {
                                 String type = param.getTableView().getItems().get(currentIndex).getType();
+                                Text text = new Text(celltext);
                                 if (type.equals("group")) {
-                                    this.getStyleClass().add("cell-group-head");
+                                    //this.setStyle("-fx-text-fill: white;");
+                                    this.setStyle("-fx-background-color: midnightblue;");
+                                    text.setFill(Color.WHITE);
+                                    text.setStroke(Color.TRANSPARENT);
+                                    text.setFontSmoothingType(FontSmoothingType.LCD);
+                                    text.setFont(Font.font("Segoe UI", FontWeight.BOLD, 14.0));
                                 } else {
                                     String cat = param.getTableView().getItems().get(currentIndex).getCategory();
                                     if (param.getText().toLowerCase().equals("value")) {
                                         switch (cat) {
                                             case "images":
-                                                this.getStyleClass().add("cell-image-addr");
+                                                text.getStyleClass().add("cell-image-addr");
                                                 break;
                                             case "colors":
-                                                this.getStyleClass().add("cell-color-val");
-                                                this.setStyle("-fx-background-color: " + celltext + ";");
+                                                text.getStyleClass().add("cell-color-val");
+                                                text.setStyle("-fx-background-color: " + celltext + ";");
                                                 break;
                                             default:
                                         }
-                                        this.getStyleClass().add("cell-color-val");
                                     }
                                 }
 
-                                Text text = new Text(celltext);
-                                //setGraphic(text);
                                 this.setWrapText(true);
                                 setPrefHeight(Control.USE_COMPUTED_SIZE);
-//                                setPrefHeight(text.getBoundsInLocal().getHeight());
                                 text.wrappingWidthProperty().bind(newCol.widthProperty());
                                 text.textProperty().bind(this.itemProperty());
                                 setGraphic(text);
-
-//                                setText(celltext);
                             }
                         }
                     };

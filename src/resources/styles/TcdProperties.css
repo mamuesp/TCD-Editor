@@ -1,11 +1,21 @@
+/*
+@CHARSET "UTF-8";
+*/
+
+.title-row {
+    -fx-background-color: midnightblue;
+    -fx-text-fill: #eaeaea;
+    -fx-color: #eaeaea;
+}
+
 .table-view {
     -fx-font-size: 8pt;
-    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-family: "Segoe UI";
     -fx-font-weight: normal;
 }
 
 .table-view .table-row-cell {
-//    -fx-cell-size: 12pt;
+    /*-fx-cell-size: 12pt;*/
 }
 
 
@@ -13,6 +23,7 @@
     -fx-text-fill: blue;
     -fx-font-weight: bold;
 }
+
 /*
 .table-view .table-row-cell:even {
     -fx-background-color: #e3e3e3;
@@ -31,8 +42,10 @@
     -fx-font-style: italic;
 }
 
+/*
 .table-view .cell-group-head {
     -fx-background-color: midnightblue;
     -fx-text-fill: whitesmoke;
     -fx-font-weight: bold;
 }
+*/

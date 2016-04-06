@@ -34,6 +34,8 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static Editor.ResourceLoader.getResource;
+
 /**
  * @author mmspaeth
  */
@@ -206,10 +208,13 @@ public class Controller implements Initializable {
                     TcdControl ctrl = (TcdControl) selectedNodes.get(0);
                     propTable.setVisible(false);
                     ((IControlSkin) ctrl.getSkin()).getProps().getEditor(propTable);
+                    String css = this.getClass().getClassLoader().getResource("resources/styles/TcdProperties.css").toExternalForm();
+                    propTable.getStylesheets().clear();
+                    propTable.getStylesheets().add(css);
                     propTable.setVisible(true);
+
                 } else {
                     propTable.setVisible(false);
-                    propTable.getColumns().clear();
                 }
             }
         });

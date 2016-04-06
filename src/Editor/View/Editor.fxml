@@ -263,7 +263,15 @@
                            <content>
                               <BorderPane prefHeight="200.0" prefWidth="200.0">
                                  <center>
-                                    <VBox fx:id="prefVBox" prefWidth="250.0" BorderPane.alignment="CENTER" />
+                                    <VBox fx:id="prefVBox" prefWidth="250.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <TableView prefHeight="200.0" prefWidth="200.0">
+                                            <columns>
+                                              <TableColumn prefWidth="75.0" text="C1" />
+                                              <TableColumn prefWidth="75.0" text="C2" />
+                                            </columns>
+                                          </TableView>
+                                       </children></VBox>
                                  </center>
                               </BorderPane>
                            </content>
